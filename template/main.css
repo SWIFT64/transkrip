@@ -1,0 +1,109 @@
+@page {
+    size: A4;
+    margin: 1cm;
+}
+
+body {
+}
+
+.content {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tg  {
+    border-spacing:0;
+    line-height: 0.1;
+    border-collapse: collapse;
+}
+
+.tg2  {
+    border-spacing:0;
+    border-collapse: collapse;
+}
+
+.tg td{
+    padding: -5px
+}
+
+.tg th{
+    border-color:black;
+    border-style:solid;
+    border-width:1px;
+    word-break:normal;
+}
+
+.tg-0lax{
+    width: 100vh;
+}
+
+.header {
+    line-height: 0.25;
+    text-align: center;
+}
+
+.header_title {
+    font-size: 20pt;
+}
+.header_no {
+    font-size: 15pt;
+}
+
+.text-title {
+    font-size: 11pt;
+}
+
+.text-summary {
+    font-size: 8pt;
+}
+
+.place-foto {
+    width: 2.79cm;
+    height: 3.81cm;
+    border-style: ridge;
+    margin-left: 250px;
+}
+
+.column-nilai {
+    column-count: 2;
+    column-gap: 20px;
+}
+.tabel-nilai {
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+}
+
+.tabel-nilai th, .tabel-nilai td {
+    text-align: center;
+    width: 25%;
+}
+
+.tabel-nilai th {
+    background-color: #aaaaaa;
+}
+
+thead {
+    display: table-header-group;
+}
+tfoot {
+    display: table-footer-group;
+}
+
+hr {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.ttd-placeholder {
+    text-align: center;
+    margin-left: 400px;
+}
+
+.ttd-p2 {
+    height: 50px;
+}
