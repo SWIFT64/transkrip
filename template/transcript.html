@@ -4,8 +4,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A4 Paper Size Example</title>
-    <link rel="stylesheet" href="main.css" />
+    <title>Academic Transcript</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+
+        body {
+        }
+
+        .content {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+        }
+
+        .tg  {
+            border-spacing:0;
+            line-height: 0.1;
+            border-collapse: collapse;
+        }
+
+        .tg2  {
+            border-spacing:0;
+            border-collapse: collapse;
+        }
+
+        .tg td{
+            padding: -5px
+        }
+
+        .tg th{
+            border-color:black;
+            border-style:solid;
+            border-width:1px;
+            word-break:normal;
+        }
+
+        .tg-0lax{
+            padding-left: 10px;
+        }
+
+        .header {
+            line-height: 0.25;
+            text-align: center;
+        }
+
+        .header_title {
+            font-size: 20pt;
+        }
+        .header_no {
+            font-size: 15pt;
+        }
+
+        .text-title {
+            font-size: 11pt;
+        }
+
+        .text-summary {
+            font-size: 8pt;
+        }
+
+        .place-foto {
+            width: 2.79cm;
+            height: 3.81cm;
+            border-style: ridge;
+            margin-left: 150px;
+        }
+
+        .column-nilai {
+            column-count: 2;
+            column-gap: 20px;
+        }
+        .tabel-nilai {
+            width: 100%;
+            border-collapse: collapse;
+            border: none;
+        }
+
+        .tabel-nilai th, .tabel-nilai td {
+            text-align: center;
+            width: 25%;
+        }
+
+        .tabel-nilai th {
+            background-color: #aaaaaa;
+        }
+
+        thead {
+            display: table-header-group;
+        }
+        tfoot {
+            display: table-footer-group;
+        }
+
+        hr {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .ttd-placeholder {
+            text-align: center;
+            margin-left: 400px;
+        }
+
+        .ttd-p2 {
+            height: 50px;
+        }        
+    </style>
 </head>
 
 <body>
@@ -13,7 +122,7 @@
         <div class="header">
             <p class="header_title"><b>TRANSKRIP AKADEMIK</b></p>
             <p class="header_title_tr"><i>ACADEMIC TRANSCRIPT</i></p>
-            <p class="header_no">No: 0000/ULBI/xxxx/yyyy</p>
+            <p class="header_no">No: {{.NoTranskrip}}</p>
         </div>
 
         <div class="student_data">
@@ -29,42 +138,42 @@
                                             <p class="text-title">Nama</p>
                                             <p class="text-summary"><i>Name</i></p>
                                         </td>
-                                        <td class="tg-0lax">John Doe</td>
+                                        <td class="tg-0lax">{{.NamaMhs}}</td>
                                     </tr>
                                     <tr>
                                         <td class="tg-0lax">
                                             <p class="text-title">NIM</p>
                                             <p class="text-summary"><i>Student Number</i></p>
                                         </td>
-                                        <td class="tg-0lax">08289638919</td>
+                                        <td class="tg-0lax">{{.NomorIndukMhs}}</td>
                                     </tr>
                                     <tr>
                                         <td class="tg-0lax">
                                             <p class="text-title">Tempat, Tgl. Lahir</p>
                                             <p class="text-summary"><i>Place/date of Birth</i></p>
                                         </td>
-                                        <td class="tg-0lax">Brixton, 5 March 2077</td>
+                                        <td class="tg-0lax">{{.TtlMhs}}</td>
                                     </tr>
                                     <tr>
                                         <td class="tg-0lax">
                                             <p class="text-title">Tahun Masuk</p>
                                             <p class="text-summary"><i>Entry Year</i></p>
                                         </td>
-                                        <td class="tg-0lax">2080</td>
+                                        <td class="tg-0lax">{{.TahunMasukMhs}}</td>
                                     </tr>
                                     <tr>
                                         <td class="tg-0lax">
                                             <p class="text-title">Fakultas</p>
                                             <p class="text-summary"><i>Faculty</i></p>
                                         </td>
-                                        <td class="tg-0lax">Vokasi</td>
+                                        <td class="tg-0lax">{{.FakultasMhs}}</td>
                                     </tr>
                                     <tr>
                                         <td class="tg-0lax">
                                             <p class="text-title">Program Studi</p>
                                             <p class="text-summary"><i>Study Program</i></p>
                                         </td>
-                                        <td class="tg-0lax">D4 Teknik Informatika</td>
+                                        <td class="tg-0lax">{{.ProdiMhs}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -104,342 +213,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Add table rows with data here -->
+                    {{range $index, $subject := .Subjects}}
                     <tr>
-                        <td>1</td>
-                        <td>Math</td>
-                        <td>3</td>
-                        <td>A</td>
+                        <td>{{.Index}}</td>
+                        <td>{{$subject.Subjname}}</td>
+                        <td>{{$subject.Credits}}</td>
+                        <td>{{$subject.Grade}}</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Math</td>
-                        <td>3</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Math</td>
-                        <td>3</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Math</td>
-                        <td>3</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Math</td>
-                        <td>3</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Math</td>
-                        <td>3</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Math</td>
-                        <td>3</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Math</td>
-                        <td>3</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Math</td>
-                        <td>3</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Science</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Ableton</td>
-                        <td>4</td>
-                        <td>B</td>
-                    </tr>
-
+                    {{end}}
                 </tbody>
             </table>
         </div>
+
         <hr>
+
         <div class="student_data">
             <table class="tg"> <!-- a-->
               <thead> <!-- a -->
@@ -453,54 +240,50 @@
                                   <p class="text-title">Jumlah SKS</p>
                                   <p class="text-summary"><i>Total Credits</i></p>
                               </td>
-                              <td class="tg-0lax">157</td>
+                              <td class="tg-0lax">{{.CreditsTotal}}</td>
                           </tr>
                           <tr>
                               <td class="tg-0lax">
                                   <p class="text-title">Indeks Prestasi Kumulatif (IPK):</p>
                                   <p class="text-summary"><i>Cumulative Grade Point Average</i></p>
                               </td>
-                              <td class="tg-0lax">3.90</td>
+                              <td class="tg-0lax">{{.GradeTotal}}</td>
                           </tr>
                           <tr>
                               <td class="tg-0lax">
                                   <p class="text-title">Lulus Pada</p>
                                   <p class="text-summary"><i>Graduation Date</i></p>
                               </td>
-                              <td class="tg-0lax">Brixton, 5 March 2077</td>
+                              <td class="tg-0lax">{{.GraduationDate}}</td>
                           </tr>
                           <tr>
                               <td class="tg-0lax">
                                   <p class="text-title">Predikat</p>
                                   <p class="text-summary"><i>Predicate</i></p>
                               </td>
-                              <td class="tg-0lax">Sangat Baik</td>
+                              <td class="tg-0lax">{{.PredikatMhs}}</td>
                           </tr>
                           <tr>
                               <td class="tg-0lax">
                                   <p class="text-title">Judul Skripsi/Tugas Akhir:</p>
                                   <p class="text-summary"><i> </i></p>
-                              </td>
-                              <td class="tg-0lax">
-                                <p>Lorem Ipsum dolor sit amet</p>
-                                <p>Lorem Ipsum dolor sit amet</p>
-                                <p>Lorem Ipsum dolor sit amet</p>
-                                <p>Lorem Ipsum dolor sit amet</p>
-                                <p>Lorem Ipsum dolor sit amet</p>
-                              </td>
+                                </td>
+                                <td class="tg-0lax">
+                                    {{range $JudulSkriptsi := .JudulSkriptsi}}
+                                    <p>{{$JudulSkriptsi.JudulIndonesia}}</p>
+                                    {{end}}
+                                </td>
                           </tr>
                           <tr>
-                              <td class="tg-0lax">
-                                <p class="text-title">Tittle of Thesis/Final Assignment:</p>
-                                <p class="text-summary"><i> </i></p>
-                              </td>
-                              <td class="tg-0lax">
-                                <p>Lorem Ipsum dolor sit amet</p>
-                                <p>Lorem Ipsum dolor sit amet</p>
-                                <p>Lorem Ipsum dolor sit amet</p>
-                                <p>Lorem Ipsum dolor sit amet</p>
-                                <p>Lorem Ipsum dolor sit amet</p>
-                              </td>
+                                <td class="tg-0lax">
+                                    <p class="text-title">Tittle of Thesis/Final Assignment:</p>
+                                    <p class="text-summary"><i> </i></p>
+                                </td>
+                                <td class="tg-0lax">
+                                    {{range $JudulSkriptsi := .JudulSkriptsi}}
+                                    <p>{{$JudulSkriptsi.JudulInggris}}</p>
+                                    {{end}}
+                                </td>
                           </tr>
                       </tbody>
                   </table>
@@ -523,14 +306,14 @@
                                   <p class="text-title">Diterbitkan di:</p>
                                   <p class="text-summary"><i>Issued in</i></p>
                               </td>
-                              <td class="tg-0lax">157</td>
+                              <td class="tg-0lax">{{.TempatTerbit}}</td>
                           </tr>
                           <tr>
                               <td class="tg-0lax">
                                   <p class="text-title">Tanggal:</p>
                                   <p class="text-summary"><i>Date</i></p>
                               </td>
-                              <td class="tg-0lax">3.90</td>
+                              <td class="tg-0lax">{{.TanggalTerbit}}</td>
                           </tr>
                       </tbody>
                   </table>
@@ -592,19 +375,19 @@
                         <td class="tg-0lax">
                             <div class="ttd-placeholder">
                                 <p><b>Dekan</b></p>
-                                <p>Fakultas Vokasi</p>
+                                <p>Fakultas {{.FakultasMhs}}</p>
                                 <div class="ttd-p2">
 
                                 </div>
-                                <p><b>Nama Dekan</b></p>
-                                <p>NUIK: 83647863278</p>
+                                <p><b>{{.NamaDekan}}</b></p>
+                                <p>NIK: {{.NikDekan}}</p>
                             </div>
                         </td>                
-
                     </tr>
                 </thead> <!-- a -->
             </table><!-- a -->
         </div>
-    </div>  <!--content-->
+    </div> <!-- content -->
 </body>
+
 </html>
