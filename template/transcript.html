@@ -113,7 +113,25 @@
 
         .ttd-p2 {
             height: 50px;
-        }        
+        }
+        .student-id-box {
+            line-height: 0.1;
+        }
+        .tabel-head {
+            line-height: 0.5;
+        }
+        .grade-content {
+            line-height: 0.1;
+        }
+        .grade-title {
+            font-size: 10pt;
+        }
+        .grade-summary {
+            font-size: 7pt;
+        }
+        .text-left {
+            text-align: left;
+        }
     </style>
 </head>
 
@@ -132,7 +150,7 @@
 
                         <td class="tg-0lax">
                             <table class="tg">
-                                <tbody>
+                                <tbody class="student-id-box">
                                     <tr>
                                         <td class="tg-0lax">
                                             <p class="text-title">Nama</p>
@@ -214,11 +232,14 @@
                 </thead>
                 <tbody>
                     {{range $index, $subject := .Subjects}}
-                    <tr>
-                        <td>{{.Index}}</td>
-                        <td>{{$subject.Subjname}}</td>
-                        <td>{{$subject.Credits}}</td>
-                        <td>{{$subject.Grade}}</td>
+                    <tr class="grade-content">
+                        <td><p class="grade-title">{{.Index}}</p></td>
+                        <td>
+                            <p class="grade-title text-left">{{$subject.Subjname}}</p>
+                            <p class="grade-summary text-left">{{$subject.Subjnameeng}}</p>
+                        </td>
+                        <td><p class="grade-title"></p>{{$subject.Credits}}</p></td>
+                        <td><p class="grade-title"></p>{{$subject.Grade}}</p></td>
                     </tr>
                     {{end}}
                 </tbody>

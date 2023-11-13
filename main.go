@@ -7,35 +7,37 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+
 	"github.com/chromedp/cdproto/page"
 	"github.com/chromedp/chromedp"
 )
 
 type Data struct {
-	NamaMhs       string
-	NomorIndukMhs int
-	TtlMhs        string
-	TahunMasukMhs int
-	FakultasMhs   string
-	ProdiMhs      string
-	NoTranskrip   string // Add this field
-	Subjects      []Subject
-    CreditsTotal  int     // Capitalized first letter to make it accessible outside the package
-	GradeTotal    float64
+	NamaMhs        string
+	NomorIndukMhs  int
+	TtlMhs         string
+	TahunMasukMhs  int
+	FakultasMhs    string
+	ProdiMhs       string
+	NoTranskrip    string // Add this field
+	Subjects       []Subject
+	CreditsTotal   int // Capitalized first letter to make it accessible outside the package
+	GradeTotal     float64
 	GraduationDate string
 	PredikatMhs    string
-	JudulSkriptsi []JudulSkriptsi
-	TempatTerbit	string	
-	TanggalTerbit	string
-	NamaDekan		string
-	NikDekan		int
+	JudulSkriptsi  []JudulSkriptsi
+	TempatTerbit   string
+	TanggalTerbit  string
+	NamaDekan      string
+	NikDekan       int
 }
 
 type Subject struct {
-	Index    int // 1-based index
-	Subjname string
-	Credits  int
-	Grade    string
+	Index       int // 1-based index
+	Subjname    string
+	Subjnameeng string
+	Credits     int
+	Grade       string
 }
 
 type JudulSkriptsi struct {
@@ -70,64 +72,67 @@ func main() {
 		GraduationDate: "Januari 2, 2023",
 		PredikatMhs:    "Dengan Pujian",
 		TempatTerbit:   "Bandung",
-		TanggalTerbit:	"21 April 2021",
-		NamaDekan:		"Aliffathur M. R.",
-		NikDekan:		763784563,
+		TanggalTerbit:  "21 April 2021",
+		NamaDekan:      "Aliffathur M. R.",
+		NikDekan:       763784563,
 		Subjects: []Subject{
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
-			{0, "Math", 4, "A"},
-			{0, "Science", 3, "B+"},
-			{0, "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
+			{0, "Matematika", "Math", 4, "A"},
+			{0, "Sains", "Science", 3, "B+"},
+			{0, "Sejarah", "History", 2, "A-"},
 		},
 		JudulSkriptsi: []JudulSkriptsi{
 			{"AIUEO", "AIUEO"},
@@ -161,7 +166,7 @@ func main() {
 		log.Println("Error executing template:", err)
 		return
 	}
-	
+
 	println("HTML file generated successfully.")
 
 	// Create a new file to write the HTML output
