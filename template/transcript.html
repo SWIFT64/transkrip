@@ -10,10 +10,8 @@
             size: A4;
             margin: 1cm;
         }
-
         body {
         }
-
         .content {
             width: 100%;
             max-width: 800px;
@@ -21,53 +19,43 @@
             padding: 20px;
             background-color: white;
         }
-
         .tg  {
             border-spacing:0;
             line-height: 0.1;
             border-collapse: collapse;
         }
-
         .tg2  {
             border-spacing:0;
             border-collapse: collapse;
         }
-
         .tg td{
             padding: -5px
         }
-
         .tg th{
             border-color:black;
             border-style:solid;
             border-width:1px;
             word-break:normal;
         }
-
         .tg-0lax{
             padding-left: 10px;
         }
-
         .header {
             line-height: 0.25;
             text-align: center;
         }
-
         .header_title {
             font-size: 20pt;
         }
         .header_no {
             font-size: 15pt;
         }
-
         .text-title {
-            font-size: 11pt;
+            font-size: 9pt;
         }
-
         .text-summary {
-            font-size: 8pt;
+            font-size: 7pt;
         }
-
         .place-foto {
             width: 2.79cm;
             height: 3.81cm;
@@ -75,7 +63,6 @@
             margin-left: 250px;
             margin-bottom: 150px;
         }
-
         .column-nilai {
             column-count: 2;
             column-gap: 20px;
@@ -85,23 +72,19 @@
             border-collapse: collapse;
             border: none;
         }
-
         .tabel-nilai th, .tabel-nilai td {
             text-align: center;
             width: 25%;
         }
-
         .tabel-nilai th {
             background-color: #aaaaaa;
         }
-
         thead {
             display: table-header-group;
         }
         tfoot {
             display: table-footer-group;
         }
-
         hr {
             padding-top: 5px;
             padding-bottom: 5px;
@@ -133,15 +116,20 @@
         .text-left {
             text-align: left;
         }
+        .footer {
+            display: table-footer-group;
+        }
     </style>
 </head>
 
 <body>
     <div class="content">
+        <div class="head_num">
+            <p class="header_no">No: {{.NoTranskrip}}</p>
+        </div>
         <div class="header">
             <p class="header_title"><b>TRANSKRIP AKADEMIK</b></p>
             <p class="header_title_tr"><i>ACADEMIC TRANSCRIPT</i></p>
-            <p class="header_no">No: {{.NoTranskrip}}</p>
         </div>
 
         <div class="student_data">
@@ -214,20 +202,20 @@
                 <thead>
                     <tr class="tabel-head">
                         <th>
-                            <p class="text-title">No.</p>
+                            <p class="text-title">NO.</p>
                             <p class="text-summary"><i>No.</i></p>
                         </th>
                         <th>
-                            <p class="text-title">Mata Kuliah</p>
-                            <p class="text-summary"><i>Subject</i></p>
+                            <p class="text-title">MATA KULIAH</p>
+                            <p class="text-summary"><i>Course</i></p>
                         </th>
                         <th>
                             <p class="text-title">SKS</p>
                             <p class="text-summary"><i>Credits</i></p>
                         </th>
                         <th>
-                            <p class="text-title">Nilai</p>
-                            <p class="text-summary"><i>Grade</i></p>
+                            <p class="text-title">HM</p>
+                            <p class="text-summary"><i>Letter Grade</i></p>
                         </th>
                     </tr>
                 </thead>
@@ -351,15 +339,15 @@
                     <tr> <!-- a -->
 
                         <td class="tg-0lax">
-                            <table class="tabel-nilai">
+                            <table style="width: 150%;" class="tabel-nilai">
                                 <thead>
                                     <tr class="tabel-head">
                                         <th>
-                                            <p class="text-title">Huruf Mutu (HM)</p>
+                                            <p class="text-title"> HURUF MUTU </p>
                                             <p class="text-summary"><i>Grade Letter</i></p>
                                         </th>
                                         <th>
-                                            <p class="text-title">Bobot Nilai</p>
+                                            <p class="text-title"> BOBOT NILAI </p>
                                             <p class="text-summary"><i>Weight</i></p>
                                         </th>
                                     </tr>
