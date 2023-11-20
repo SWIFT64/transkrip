@@ -145,14 +145,18 @@
                                             <p class="text-title">Nama</p>
                                             <p class="text-summary"><i>Name</i></p>
                                         </td>
-                                        <td class="tg-0lax">{{.NamaMhs}}</td>
+                                        <td class="tg-0lax">
+                                            <p class="text-title"> : {{.NamaMhs}}</p>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="tg-0lax">
                                             <p class="text-title">NIM</p>
                                             <p class="text-summary"><i>Student Number</i></p>
                                         </td>
-                                        <td class="tg-0lax">{{.NomorIndukMhs}}</td>
+                                        <td class="tg-0lax">
+                                            <p class="text-title"> : {{.NomorIndukMhs}}</p>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="tg-0lax">
@@ -160,8 +164,8 @@
                                             <p class="text-summary"><i>Place/date of Birth</i></p>
                                         </td>
                                         <td class="tg-0lax">
-                                            <p class="text-title">{{.TtlMhs}}</p>
-                                            <p class="text-summary"><i>{{.TtlMhsEng}}<i></p>
+                                            <p class="text-title"> : {{.TtlMhs}}</p>
+                                            <p class="text-summary"><i>&nbsp;&nbsp;&nbsp;{{.TtlMhsEng}}<i></p>
                                         </td>
                                     </tr>
                                     <tr>
@@ -169,7 +173,9 @@
                                             <p class="text-title">Tahun Masuk</p>
                                             <p class="text-summary"><i>Entry Year</i></p>
                                         </td>
-                                        <td class="tg-0lax">{{.TahunMasukMhs}}</td>
+                                        <td class="tg-0lax">
+                                            <p class="text-title"> : {{.TahunMasukMhs}}</p>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="tg-0lax">
@@ -177,8 +183,8 @@
                                             <p class="text-summary"><i>Faculty</i></p>
                                         </td>
                                         <td class="tg-0lax">
-                                            <p class="text-title">{{.FakultasMhs}}</p>
-                                            <p class="text-summary"><i>{{.FakultasMhsEng}}<i></p>
+                                            <p class="text-title"> : {{.FakultasMhs}}</p>
+                                            <p class="text-summary"><i>&nbsp;&nbsp;&nbsp;{{.FakultasMhsEng}}<i></p>
                                         </td>
                                     </tr>
                                     <tr>
@@ -186,7 +192,10 @@
                                             <p class="text-title">Program Studi</p>
                                             <p class="text-summary"><i>Study Program</i></p>
                                         </td>
-                                        <td class="tg-0lax">{{.ProdiMhs}}</td>
+                                        <td class="tg-0lax">
+                                            <p class="text-title"> : {{.ProdiMhs}}</p>
+                                            <p class="text-summary"><i>&nbsp;&nbsp;&nbsp;{{.ProdiMhsEng}}<i></p>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -256,28 +265,28 @@
                                   <p class="text-title">Jumlah SKS</p>
                                   <p class="text-summary"><i>Total Credits</i></p>
                               </td>
-                              <td class="tg-0lax">{{.CreditsTotal}}</td>
+                              <td class="tg-0lax"> : {{.CreditsTotal}}</td>
                           </tr>
                           <tr>
                               <td class="tg-0lax">
                                   <p class="text-title">Indeks Prestasi Kumulatif (IPK):</p>
                                   <p class="text-summary"><i>Cumulative Grade Point Average</i></p>
                               </td>
-                              <td class="tg-0lax">{{.GradeTotal}}</td>
+                              <td class="tg-0lax"> : {{.GradeTotal}}</td>
                           </tr>
                           <tr>
                               <td class="tg-0lax">
                                   <p class="text-title">Lulus Pada</p>
                                   <p class="text-summary"><i>Graduation Date</i></p>
                               </td>
-                              <td class="tg-0lax">{{.GraduationDate}}</td>
+                              <td class="tg-0lax"> : {{.GraduationDate}}</td>
                           </tr>
                           <tr>
                               <td class="tg-0lax">
                                   <p class="text-title">Predikat</p>
                                   <p class="text-summary"><i>Predicate</i></p>
                               </td>
-                              <td class="tg-0lax">{{.PredikatMhs}}</td>
+                              <td class="tg-0lax"> : {{.PredikatMhs}}</td>
                           </tr>
                           <tr>
                               <td class="tg-0lax">
@@ -286,7 +295,7 @@
                                 </td>
                                 <td class="tg-0lax">
                                     {{range $JudulSkriptsi := .JudulSkriptsi}}
-                                    <p>{{$JudulSkriptsi.JudulIndonesia}}</p>
+                                    <p> : {{$JudulSkriptsi.JudulIndonesia}}</p>
                                     {{end}}
                                 </td>
                           </tr>
@@ -297,7 +306,7 @@
                                 </td>
                                 <td class="tg-0lax">
                                     {{range $JudulSkriptsi := .JudulSkriptsi}}
-                                    <p>{{$JudulSkriptsi.JudulInggris}}</p>
+                                    <p> : {{$JudulSkriptsi.JudulInggris}}</p>
                                     {{end}}
                                 </td>
                           </tr>
@@ -322,7 +331,9 @@
                                   <p class="text-title">Diterbitkan di:</p>
                                   <p class="text-summary"><i>Issued in</i></p>
                               </td>
-                              <td class="tg-0lax">{{.TempatTerbit}}</td>
+                              <td class="tg-0lax">
+                                <p class="text-title"> : {{.TempatTerbit}}</p>
+                            </td>                             
                           </tr>
                           <tr>
                               <td class="tg-0lax">
@@ -331,8 +342,8 @@
                               </td>
                             </td>
                             <td class="tg-0lax">
-                                <p class="text-title">{{.TanggalTerbit}}</p>
-                                <p class="text-summary"><i>{{.TanggalTerbitEng}}<i></p>
+                                <p class="text-title"> : {{.TanggalTerbit}}</p>
+                                <p class="text-summary"><i>&nbsp;&nbsp;{{.TanggalTerbitEng}}<i></p>
                             </td>
                           </tr>
                       </tbody>

@@ -21,6 +21,7 @@ type Data struct {
 	FakultasMhs      string
 	FakultasMhsEng   string
 	ProdiMhs         string
+	ProdiMhsEng      string
 	NoTranskrip      string // Add this field
 	Subjects         []Subject
 	CreditsTotal     int // Capitalized first letter to make it accessible outside the package
@@ -72,6 +73,7 @@ func main() {
 		FakultasMhs:      "Sekolah Vokasi",
 		FakultasMhsEng:   "Vocation School",
 		ProdiMhs:         "D4 Teknik Informatika",
+		ProdiMhsEng:      "D4 Informatic engineering",
 		NoTranskrip:      "12345",
 		GradeTotal:       3.9,
 		GraduationDate:   "Januari 2, 2023",
