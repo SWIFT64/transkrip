@@ -13,25 +13,26 @@ import (
 )
 
 type Data struct {
-	NamaMhs        string
-	NomorIndukMhs  int
-	TtlMhs         string
-	TtlMhsEng      string
-	TahunMasukMhs  string
-	FakultasMhs    string
-	FakultasMhsEng string
-	ProdiMhs       string
-	NoTranskrip    string // Add this field
-	Subjects       []Subject
-	CreditsTotal   int // Capitalized first letter to make it accessible outside the package
-	GradeTotal     float64
-	GraduationDate string
-	PredikatMhs    string
-	JudulSkriptsi  []JudulSkriptsi
-	TempatTerbit   string
-	TanggalTerbit  string
-	NamaDekan      string
-	NikDekan       int
+	NamaMhs          string
+	NomorIndukMhs    int
+	TtlMhs           string
+	TtlMhsEng        string
+	TahunMasukMhs    string
+	FakultasMhs      string
+	FakultasMhsEng   string
+	ProdiMhs         string
+	NoTranskrip      string // Add this field
+	Subjects         []Subject
+	CreditsTotal     int // Capitalized first letter to make it accessible outside the package
+	GradeTotal       float64
+	GraduationDate   string
+	PredikatMhs      string
+	JudulSkriptsi    []JudulSkriptsi
+	TempatTerbit     string
+	TanggalTerbit    string
+	TanggalTerbitEng string
+	NamaDekan        string
+	NikDekan         int
 }
 
 type Subject struct {
@@ -63,22 +64,23 @@ func main() {
 
 	// Sample data representing student information and grades
 	data := Data{
-		NamaMhs:        "John Doe",
-		NomorIndukMhs:  813619637,
-		TtlMhs:         "Jakarta, 23 Januari 2000",
-		TtlMhsEng:      "Jakarta, 23 January 2000",
-		TahunMasukMhs:  "2019/2020 Ganjil",
-		FakultasMhs:    "Sekolah Vokasi",
-		FakultasMhsEng: "Vocation School",
-		ProdiMhs:       "D4 Teknik Informatika",
-		NoTranskrip:    "12345",
-		GradeTotal:     3.9,
-		GraduationDate: "Januari 2, 2023",
-		PredikatMhs:    "Dengan Pujian",
-		TempatTerbit:   "Bandung",
-		TanggalTerbit:  "21 April 2021",
-		NamaDekan:      "Aliffathur M. R.",
-		NikDekan:       763784563,
+		NamaMhs:          "John Doe",
+		NomorIndukMhs:    813619637,
+		TtlMhs:           "Jakarta, 23 Januari 2000",
+		TtlMhsEng:        "Jakarta, 23 January 2000",
+		TahunMasukMhs:    "2019/2020 Ganjil",
+		FakultasMhs:      "Sekolah Vokasi",
+		FakultasMhsEng:   "Vocation School",
+		ProdiMhs:         "D4 Teknik Informatika",
+		NoTranskrip:      "12345",
+		GradeTotal:       3.9,
+		GraduationDate:   "Januari 2, 2023",
+		PredikatMhs:      "Dengan Pujian",
+		TempatTerbit:     "Bandung",
+		TanggalTerbit:    "21 April 2021",
+		TanggalTerbitEng: "21 April 2021",
+		NamaDekan:        "Aliffathur M. R.",
+		NikDekan:         763784563,
 		Subjects: []Subject{
 			{0, "Matematika", "Math", 4, "A"},
 			{0, "Sains", "Science", 3, "B+"},
