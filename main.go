@@ -16,8 +16,10 @@ type Data struct {
 	NamaMhs        string
 	NomorIndukMhs  int
 	TtlMhs         string
-	TahunMasukMhs  int
+	TtlMhsEng      string
+	TahunMasukMhs  string
 	FakultasMhs    string
+	FakultasMhsEng string
 	ProdiMhs       string
 	NoTranskrip    string // Add this field
 	Subjects       []Subject
@@ -64,8 +66,10 @@ func main() {
 		NamaMhs:        "John Doe",
 		NomorIndukMhs:  813619637,
 		TtlMhs:         "Jakarta, 23 Januari 2000",
-		TahunMasukMhs:  2019,
-		FakultasMhs:    "Vokasi",
+		TtlMhsEng:      "Jakarta, 23 January 2000",
+		TahunMasukMhs:  "2019/2020 Ganjil",
+		FakultasMhs:    "Sekolah Vokasi",
+		FakultasMhsEng: "Vocation School",
 		ProdiMhs:       "D4 Teknik Informatika",
 		NoTranskrip:    "12345",
 		GradeTotal:     3.9,
