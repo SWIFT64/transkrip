@@ -265,28 +265,39 @@
                                   <p class="text-title">Jumlah SKS</p>
                                   <p class="text-summary"><i>Total Credits</i></p>
                               </td>
-                              <td class="tg-0lax"> : {{.CreditsTotal}}</td>
+                              <td class="tg-0lax">
+                                <p class="text-title"> : {{.CreditsTotal}}</p>
+                                <p class="text-summary"><i>&nbsp;&nbsp;&nbsp;{{.CreditsTotal}}<i></p>
+                              </td>
                           </tr>
                           <tr>
                               <td class="tg-0lax">
                                   <p class="text-title">Indeks Prestasi Kumulatif (IPK):</p>
                                   <p class="text-summary"><i>Cumulative Grade Point Average</i></p>
                               </td>
-                              <td class="tg-0lax"> : {{.GradeTotal}}</td>
+                              <td class="tg-0lax">
+                                <p class="text-title"> : {{.GradeTotal}}</p>
+                                <p class="text-summary"><i>&nbsp;&nbsp;&nbsp;{{.GradeTotal}}<i></p>
+                              </td>
                           </tr>
                           <tr>
                               <td class="tg-0lax">
                                   <p class="text-title">Lulus Pada</p>
                                   <p class="text-summary"><i>Graduation Date</i></p>
                               </td>
-                              <td class="tg-0lax"> : {{.GraduationDate}}</td>
-                          </tr>
+                              <td class="tg-0lax">
+                                <p class="text-title"> : {{.GraduationDate}}</p>
+                                <p class="text-summary"><i>&nbsp;&nbsp;&nbsp;{{.GraduationDateEng}}<i></p>
+                              </td>                          </tr>
                           <tr>
                               <td class="tg-0lax">
                                   <p class="text-title">Predikat</p>
                                   <p class="text-summary"><i>Predicate</i></p>
                               </td>
-                              <td class="tg-0lax"> : {{.PredikatMhs}}</td>
+                              <td class="tg-0lax">
+                                <p class="text-title"> : {{.PredikatMhs}}</p>
+                                <p class="text-summary"><i>&nbsp;&nbsp;&nbsp;{{.PredikatMhsEng}}<i></p>
+                              </td> 
                           </tr>
                           <tr>
                               <td class="tg-0lax">
@@ -333,6 +344,8 @@
                               </td>
                               <td class="tg-0lax">
                                 <p class="text-title"> : {{.TempatTerbit}}</p>
+                                <p class="text-summary"><i>&nbsp;&nbsp;&nbsp;{{.TempatTerbit}}<i></p>
+                               </td> 
                             </td>                             
                           </tr>
                           <tr>
