@@ -300,27 +300,23 @@
                               </td> 
                           </tr>
                           <tr>
-                              <td class="tg-0lax">
-                                  <p class="text-title">Judul Skripsi/Tugas Akhir:</p>
-                                  <p class="text-summary"><i> </i></p>
-                                </td>
-                                <td class="tg-0lax">
-                                    {{range $JudulSkriptsi := .JudulSkriptsi}}
-                                    <p> : {{$JudulSkriptsi.JudulIndonesia}}</p>
-                                    {{end}}
-                                </td>
-                          </tr>
-                          <tr>
-                                <td class="tg-0lax">
-                                    <p class="text-title">Tittle of Thesis/Final Assignment:</p>
-                                    <p class="text-summary"><i> </i></p>
-                                </td>
-                                <td class="tg-0lax">
-                                    {{range $JudulSkriptsi := .JudulSkriptsi}}
-                                    <p> : {{$JudulSkriptsi.JudulInggris}}</p>
-                                    {{end}}
-                                </td>
-                          </tr>
+                            <td class="tg-0lax">
+                                <p class="text-title">Judul Skripsi/Tugas Akhir:</p>
+                                <p class="text-summary"><i> </i></p>
+                            </td>
+                            <td class="tg-0lax">
+                                <p> : {{.JudulSkriptsi.JudulIndonesia}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax">
+                                <p class="text-title">Tittle of Thesis/Final Assignment:</p>
+                                <p class="text-summary"><i> </i></p>
+                            </td>
+                            <td class="tg-0lax">
+                                <p> : {{.JudulSkriptsi.JudulInggris}}</p>
+                            </td>
+                        </tr>
                       </tbody>
                   </table>
                   </td>          

@@ -2,56 +2,109 @@ package main
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
 	"html/template"
 	"io/ioutil"
 	"log"
+	"net/http"
 	"os"
 	"path/filepath"
+	"strconv"
 
+	"github.com/aiteung/athelper/fiber"
 	"github.com/chromedp/cdproto/page"
 	"github.com/chromedp/chromedp"
 )
 
 type Data struct {
-	NamaMhs           string
-	NomorIndukMhs     int
-	TtlMhs            string
-	TtlMhsEng         string
-	TahunMasukMhs     string
-	FakultasMhs       string
-	FakultasMhsEng    string
-	ProdiMhs          string
-	ProdiMhsEng       string
-	NoTranskrip       string // Add this field
-	Subjects          []Subject
-	CreditsTotal      int // Capitalized first letter to make it accessible outside the package
-	GradeTotal        float64
-	GraduationDate    string
-	GraduationDateEng string
-	PredikatMhs       string
-	PredikatMhsEng    string
-	JudulSkriptsi     []JudulSkriptsi
-	TempatTerbit      string
-	TanggalTerbit     string
-	TanggalTerbitEng  string
-	NamaDekan         string
-	NikDekan          int
+	NamaMhs           string        `json:"nama_mhs"`
+	NomorIndukMhs     int           `json:"nomor_induk_mhs"`
+	TtlMhs            string        `json:"ttl_mhs"`
+	TtlMhsEng         string        `json:"ttl_mhs_eng"`
+	TahunMasukMhs     string        `json:"tahun_masuk_mhs"`
+	FakultasMhs       string        `json:"fakultas_mhs"`
+	FakultasMhsEng    string        `json:"fakultas_mhs_eng"`
+	ProdiMhs          string        `json:"prodi_mhs"`
+	ProdiMhsEng       string        `json:"prodi_mhs_eng"`
+	NoTranskrip       string        `json:"no_transkrip"`
+	Subjects          []Subject     `json:"subjects"`
+	CreditsTotal      int           `json:"credits_total"`
+	GradeTotal        float64       `json:"grade_total"`
+	GraduationDate    string        `json:"graduation_date"`
+	GraduationDateEng string        `json:"graduation_date_eng"`
+	PredikatMhs       string        `json:"predikat_mhs"`
+	PredikatMhsEng    string        `json:"predikat_mhs_eng"`
+	JudulSkriptsi     JudulSkriptsi `json:"judul_skriptsi"`
+	TempatTerbit      string        `json:"tempat_terbit"`
+	TanggalTerbit     string        `json:"tanggal_terbit"`
+	TanggalTerbitEng  string        `json:"tanggal_terbit_eng"`
+	NamaDekan         string        `json:"nama_dekan"`
+	NikDekan          int           `json:"nik_dekan"`
 }
 
 type Subject struct {
-	Index       int // 1-based index
-	Subjname    string
-	Subjnameeng string
-	Credits     int
-	Grade       string
+	Index       int    `json:"index"`
+	Subjname    string `json:"subjname"`
+	Subjnameeng string `json:"subjnameeng"`
+	Credits     int    `json:"credits"`
+	Grade       string `json:"grade"`
 }
 
 type JudulSkriptsi struct {
-	JudulIndonesia string
-	JudulInggris   string
+	JudulIndonesia string `json:"judul_indonesia"`
+	JudulInggris   string `json:"judul_inggris"`
 }
 
 func main() {
+	// Replace the mock API URL with the Ulbi API URL
+	apiURL := "https://lulusan.ulbi.ac.id/lulusan/transkrip/4194006"
+	// Include the token in the request headers
+	request, err := http.NewRequest("GET", apiURL, nil)
+	if err != nil {
+		log.Println("Error creating API request:", err)
+		return
+	}
+	// Set the authorization header with the provided token
+	request.Header.Set("LOGIN", "v4.public.eyJleHAiOiIyMDIzLTExLTIxVDE1OjQzOjE2KzA3OjAwIiwiaWF0IjoiMjAyMy0xMS0yMVQxMzo0MzoxNiswNzowMCIsImlkIjoiNjI4NTc1NzcwNzI0OCIsIm5iZiI6IjIwMjMtMTEtMjFUMTM6NDM6MTYrMDc6MDAifWvokEBFvINWlj8b-qdf6MiJB5_Q7XB55xUJQSslF6kpungjOckFiQ2IreJ2oRhXDAiPeFK7Ymvp4iD5RhCQKg4")
+
+	// Send the request and get the response
+	client := &http.Client{}
+	response, err := client.Do(request)
+	if err != nil {
+		log.Println("Error fetching data from API:", err)
+		return
+	}
+	defer response.Body.Close()
+
+	// Read the JSON response
+	body, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		log.Println("Error reading API response:", err)
+		return
+	}
+
+	// Parse JSON data into a single Data struct
+	fmt.Printf("%s\n\n", body)
+	var raw fiber.ReturnData[Data]
+	err = json.Unmarshal(body, &raw)
+	if err != nil {
+		log.Println("Error decoding JSON:", err)
+		return
+	}
+	student := raw.Data
+	// Calculate total credits
+	var creditsTotal int
+	for _, subject := range student.Subjects {
+		creditsTotal += subject.Credits
+	}
+	student.CreditsTotal = creditsTotal
+
+	// Increment the index for each subject to make it 1-based
+	for i := range student.Subjects {
+		student.Subjects[i].Index = i + 1
+	}
+
 	// Read the HTML template from the file
 	templateFile := "template/transcript.html"
 	htmlTemplate, err := ioutil.ReadFile(templateFile)
@@ -65,138 +118,24 @@ func main() {
 		panic(err)
 	}
 
-	// Sample data representing student information and grades
-	data := Data{
-		NamaMhs:           "John Doe",
-		NomorIndukMhs:     813619637,
-		TtlMhs:            "Jakarta, 23 Januari 2000",
-		TtlMhsEng:         "Jakarta, 23 January 2000",
-		TahunMasukMhs:     "2019/2020 Ganjil",
-		FakultasMhs:       "Sekolah Vokasi",
-		FakultasMhsEng:    "Vocation School",
-		ProdiMhs:          "D4 Teknik Informatika",
-		ProdiMhsEng:       "D4 Informatic engineering",
-		NoTranskrip:       "12345",
-		GradeTotal:        3.9,
-		GraduationDate:    "Januari 2, 2023",
-		GraduationDateEng: "January 2, 2023",
-		PredikatMhs:       "Dengan Pujian",
-		PredikatMhsEng:    "CUM LAUDE",
-		TempatTerbit:      "Bandung",
-		TanggalTerbit:     "21 April 2021",
-		TanggalTerbitEng:  "21 April 2021",
-		NamaDekan:         "Aliffathur M. R.",
-		NikDekan:          763784563,
-		Subjects: []Subject{
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-			{0, "Matematika", "Math", 4, "A"},
-			{0, "Sains", "Science", 3, "B+"},
-			{0, "Sejarah", "History", 2, "A-"},
-		},
-		JudulSkriptsi: []JudulSkriptsi{
-			{"AIUEO", "AIUEO"},
-			{"BBBBB", "BBBBB"},
-			{"BBBBB", "BBBBB"},
-			{"BBBBB", "BBBBB"},
-		},
-	}
-
-	// Calculate total credits
-	var creditsTotal int
-	for _, subject := range data.Subjects {
-		creditsTotal += subject.Credits
-	}
-	data.CreditsTotal = creditsTotal
-
-	// Increment the index for each subject to make it 1-based
-	for i := range data.Subjects {
-		data.Subjects[i].Index = i + 1
-	}
-
 	// Create a new file to write the output
-	outputFile, err := os.Create("output.html")
+	outputFileName := "output_" + strconv.Itoa(student.NomorIndukMhs) + ".html"
+	outputFile, err := os.Create(outputFileName)
 	if err != nil {
-		panic(err)
+		log.Println("Error creating output file:", err)
+		return
 	}
 	defer outputFile.Close()
 
-	err = tmpl.Execute(outputFile, data)
-	if err != nil {
-		log.Println("Error executing template:", err)
-		return
-	}
-
-	println("HTML file generated successfully.")
-
-	// Create a new file to write the HTML output
-	htmlOutputFile, err := os.Create("output.html")
-	if err != nil {
-		panic(err)
-	}
-	defer htmlOutputFile.Close()
-
 	// Execute the template and write the HTML content to the file
-	err = tmpl.Execute(htmlOutputFile, data)
+	err = tmpl.Execute(outputFile, student)
 	if err != nil {
 		log.Println("Error executing template:", err)
 		return
 	}
 
 	// Get the absolute path of the HTML file
-	absPath, err := filepath.Abs(htmlOutputFile.Name())
+	absPath, err := filepath.Abs(outputFile.Name())
 	if err != nil {
 		log.Println("Error getting absolute path:", err)
 		return
@@ -234,11 +173,12 @@ func main() {
 	}
 
 	// Write the PDF data to a file
-	err = ioutil.WriteFile("output.pdf", pdfData, 0644)
+	pdfFileName := "output_" + strconv.Itoa(student.NomorIndukMhs) + ".pdf"
+	err = ioutil.WriteFile(pdfFileName, pdfData, 0644)
 	if err != nil {
 		log.Println("Error writing PDF file:", err)
 		return
 	}
 
-	println("PDF file generated successfully.")
+	log.Printf("PDF file generated successfully for student %d.\n", student.NomorIndukMhs)
 }
