@@ -66,7 +66,7 @@ func main() {
 		return
 	}
 	// Set the authorization header with the provided token
-	request.Header.Set("LOGIN", "v4.public.eyJleHAiOiIyMDIzLTExLTIxVDE1OjQzOjE2KzA3OjAwIiwiaWF0IjoiMjAyMy0xMS0yMVQxMzo0MzoxNiswNzowMCIsImlkIjoiNjI4NTc1NzcwNzI0OCIsIm5iZiI6IjIwMjMtMTEtMjFUMTM6NDM6MTYrMDc6MDAifWvokEBFvINWlj8b-qdf6MiJB5_Q7XB55xUJQSslF6kpungjOckFiQ2IreJ2oRhXDAiPeFK7Ymvp4iD5RhCQKg4")
+	request.Header.Set("LOGIN", "v4.public.eyJleHAiOiIyMDIzLTExLTIxVDIzOjE4OjM4KzA3OjAwIiwiaWF0IjoiMjAyMy0xMS0yMVQyMToxODozOCswNzowMCIsImlkIjoiNjI4NTE1Njc2ODcxMyIsIm5iZiI6IjIwMjMtMTEtMjFUMjE6MTg6MzgrMDc6MDAife5XKpaZMKun0sDMmRu8SHjGQMu8JW9tx1G7MCZzn-IgERq_-SbgFXfaJrF56I3XucYTF70bvndXqFQ8FC1AKgU")
 
 	// Send the request and get the response
 	client := &http.Client{}
