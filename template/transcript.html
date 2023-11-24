@@ -65,7 +65,7 @@
         }
         .column-nilai {
             column-count: 2;
-            column-gap: 20px;
+            column-gap: 2.5px;
         }
         .tabel-nilai {
             width: 100%;
@@ -93,7 +93,20 @@
         .tabel-bobot th {
             background-color: #aaaaaa;
         }
-        
+        .tabel-bobot th:first-child,
+        .tabel-bobot td:first-child {
+            width: 20%; /* Sesuaikan lebar kolom Nomor/Index */
+        }
+
+        .tabel-bobot th:nth-child(2),
+        .tabel-bobot td:nth-child(2) {
+            width: 5%; /* Sesuaikan lebar kolom Mata Kuliah */
+        }
+        .tabel-bobot th:nth-child(3),
+        .tabel-bobot td:nth-child(3) {
+            width: 20%; /* Sesuaikan lebar kolom SKS dan Grade */
+        }
+
         thead {
             display: table-header-group;
         }
@@ -151,17 +164,24 @@
         .footer {
             display: table-footer-group;
         }
+        .tabel_line {
+            width: 100%;
+            border-top: 1px solid #000; /* You can customize the color and style */
+            border-bottom: 1px solid #000; /* You can customize the color and style */
+        }
+        .div_line {
+            width: 100%;
+            border-bottom: 1px solid #000; /* You can customize the color and style */
+        }
     </style>
 </head>
 
 <body>
     <div class="content">
-        <div class="head_num">
-            <p class="header_no">No: {{.NoTranskrip}}</p>
-        </div>
         <div class="header">
             <p class="header_title"><b>TRANSKRIP AKADEMIK</b></p>
             <p class="header_title_tr"><i>ACADEMIC TRANSCRIPT</i></p>
+            <p class="header_no">No: {{.NoTranskrip}}</p>
         </div>
 
         <div class="student_data">
@@ -235,7 +255,6 @@
                     
                         <td class="tg-0lax">
                             <div class="place-foto">
-                            <!-- Content for the place-foto div can be added here -->
                             </div>
                         </td>                
 
@@ -247,7 +266,7 @@
         <div class="column-nilai">
             <table class="tabel-nilai">
                 <thead>
-                    <tr class="tabel-head">
+                    <tr class="tabel-head tabel_line">
                         <th>
                             <p class="text-title">NO.</p>
                             <p class="text-summary"><i>No.</i></p>
@@ -272,7 +291,7 @@
                         <td><p class="grade-title">{{.Index}}</p></td>
                         <td>
                             <p class="grade-title text-left">{{$subject.Subjname}}</p>
-                            <p class="grade-summary text-left">{{$subject.Subjnameeng}}</p>
+                            <p class="grade-summary text-left"><i>{{$subject.Subjnameeng}}</i></p>
                         </td>
                         <td><p class="grade-title">{{$subject.Credits}}</p></td>
                         <td><p class="grade-title">{{$subject.Grade}}</p></td>
@@ -282,7 +301,7 @@
             </table>
         </div>
 
-        <hr>
+        <div class="div_line"></div>
 
         <div class="student_data">
             <table class="tg"> <!-- a-->
@@ -334,8 +353,7 @@
                           </tr>
                           <tr>
                             <td class="tg-0lax">
-                                <p class="text-title">Judul Skripsi:</p>
-                                <p class="text-summary">Tugas Akhir</p>
+                                <p class="text-title">Judul Skripsi/Tugas Akhir:</p>
                             </td>
                             <td class="tg-0lax">
                                 <p class="text-title"> : {{.JudulSkriptsi.JudulIndonesia}}</p>
@@ -343,8 +361,7 @@
                         </tr>
                         <tr>
                             <td class="tg-0lax">
-                                <p class="text-title">Tittle of Thesis:</p>
-                                <p class="text-summary">Final Assignment</p>
+                                <p class="text-title">Tittle of Thesis/Final Assignment</p>
                             </td>
                             <td class="tg-0lax">
                                 <p class="text-title"> : {{.JudulSkriptsi.JudulInggris}}</p>
@@ -357,7 +374,7 @@
               </thead> <!-- a -->
             </table><!-- a -->
         </div>
-        <hr>
+        <div class="div_line"></div>
         <div class="student_data">
             <table class="tg"> <!-- a-->
               <thead> <!-- a -->
@@ -404,10 +421,13 @@
                         <td class="tg-0lax">
                             <table style="width: 150%;" class="tabel-bobot">
                                 <thead>
-                                    <tr class="tabel-head">
+                                    <tr class="tabel-head tabel_line">
                                         <th>
                                             <p class="text-title"> HURUF MUTU </p>
                                             <p class="text-summary"><i>Grade Letter</i></p>
+                                        </th>
+                                        <th>
+
                                         </th>
                                         <th>
                                             <p class="text-title"> BOBOT NILAI </p>
@@ -419,26 +439,32 @@
                                     <!-- Add table rows with data here -->
                                     <tr>
                                         <td>A</td>
+                                        <td> = </td>
                                         <td>4.0</td>
                                     </tr>
                                     <tr>
                                         <td>AB</td>
+                                        <td> = </td>
                                         <td>3.5</td>
                                     </tr>
                                     <tr>
                                         <td>B</td>
+                                        <td> = </td>
                                         <td>3.0</td>
                                     </tr>
                                     <tr>
                                         <td>BC</td>
+                                        <td> = </td>
                                         <td>2.5</td>
                                     </tr>
                                     <tr>
                                         <td>C</td>
+                                        <td> = </td>
                                         <td>2.0</td>
                                     </tr>
                                     <tr>
                                         <td>D</td>
+                                        <td> = </td>
                                         <td>1.0</td>
                                     </tr>
                                 </tbody>
