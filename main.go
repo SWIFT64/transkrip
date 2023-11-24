@@ -17,6 +17,12 @@ import (
 	"github.com/chromedp/chromedp"
 )
 
+// Config struct to hold configuration values
+type Config struct {
+	APIURL      string `json:"apiURL"`
+	LoginToken  string `json:"loginToken"`
+}
+
 type Data struct {
 	NamaMhs           string        `json:"nama_mhs"`
 	NomorIndukMhs     int           `json:"nomor_induk_mhs"`
@@ -57,8 +63,16 @@ type JudulSkriptsi struct {
 }
 
 func main() {
-	// Replace the mock API URL with the Ulbi API URL
-	apiURL := "https://lulusan.ulbi.ac.id/lulusan/transkrip/4194006"
+	// Read configuration from file
+	config, err := readConfig("config.json")
+	if err != nil {
+		log.Println("Error reading configuration:", err)
+		return
+	}
+		// Replace the mock API URL with the Ulbi API URL
+
+	apiURL := config.APIURL
+
 	// Include the token in the request headers
 	request, err := http.NewRequest("GET", apiURL, nil)
 	if err != nil {
@@ -66,7 +80,7 @@ func main() {
 		return
 	}
 	// Set the authorization header with the provided token
-	request.Header.Set("LOGIN", "v4.public.eyJleHAiOiIyMDIzLTExLTIxVDIzOjE4OjM4KzA3OjAwIiwiaWF0IjoiMjAyMy0xMS0yMVQyMToxODozOCswNzowMCIsImlkIjoiNjI4NTE1Njc2ODcxMyIsIm5iZiI6IjIwMjMtMTEtMjFUMjE6MTg6MzgrMDc6MDAife5XKpaZMKun0sDMmRu8SHjGQMu8JW9tx1G7MCZzn-IgERq_-SbgFXfaJrF56I3XucYTF70bvndXqFQ8FC1AKgU")
+	request.Header.Set("LOGIN", config.LoginToken)
 
 	// Send the request and get the response
 	client := &http.Client{}
@@ -181,4 +195,21 @@ func main() {
 	}
 
 	log.Printf("PDF file generated successfully for student %d.\n", student.NomorIndukMhs)
+}
+
+// Function to read configuration from a file
+func readConfig(filename string) (Config, error) {
+	var config Config
+
+	file, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return config, err
+	}
+
+	err = json.Unmarshal(file, &config)
+	if err != nil {
+		return config, err
+	}
+
+	return config, nil
 }
