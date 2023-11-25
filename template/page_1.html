@@ -10,8 +10,6 @@
             size: A4;
             margin: 1cm;
         }
-        body {
-        }
         .content {
             width: 100%;
             max-width: 800px;
@@ -35,8 +33,6 @@
             border-width:1px;
             word-break:unset;
         }
-        .tg-0lax{
-        }
         .tg-0lax2{
             padding-left: 10px;
         }
@@ -45,10 +41,13 @@
             text-align: center;
         }
         .header_title {
-            font-size: 20pt;
+            font-size: 14pt;
+        }
+        .header_summary {
+            font-size: 10pt;
         }
         .header_no {
-            font-size: 15pt;
+            font-size: 11pt;
         }
         .text-title {
             font-size: 7pt;
@@ -60,12 +59,13 @@
             width: 2.79cm;
             height: 3.81cm;
             border-style: ridge;
-            margin-left: 250px;
-            margin-bottom: 150px;
+            margin-left: 300px;
+            margin-bottom: 50px;
         }
         .column-nilai {
             column-count: 2;
             column-gap: 2.5px;
+            margin-top: 15px;
         }
         .tabel-nilai {
             width: 100%;
@@ -80,7 +80,7 @@
             background-color: #aaaaaa;
         }
 
-
+        header_summary
         .tabel-bobot {
             width: 100%;
             border-collapse: collapse;
@@ -173,6 +173,32 @@
             width: 100%;
             border-bottom: 1px solid #000; /* You can customize the color and style */
         }
+        .footer {
+            bottom: 0;
+            position: fixed;
+        }
+        .student_data {
+            margin-top: 7.5%;
+        }
+        .footer-content {
+            line-height: 0.1;
+        }
+        .footer-title {
+            font-size: 12pt;
+        }
+        .footer-summary {
+            font-size: 10pt;
+        }
+        .footer-col {
+            width: 75%;
+        }
+        .box-paraf {
+            width: 30x; /* Set the width of the box */
+            height: 50px; /* Set the height of the box */
+            border: 1px solid black; /* Set the border properties (width, style, and color) */
+            font-size: 10pt;
+            margin-left: 170px;
+        }
     </style>
 </head>
 
@@ -180,7 +206,7 @@
     <div class="content">
         <div class="header">
             <p class="header_title"><b>TRANSKRIP AKADEMIK</b></p>
-            <p class="header_title_tr"><i>ACADEMIC TRANSCRIPT</i></p>
+            <p class="header_summary"><i>ACADEMIC TRANSCRIPT</i></p>
             <p class="header_no">No: {{.NoTranskrip}}</p>
         </div>
 
@@ -281,7 +307,7 @@
                         </th>
                         <th>
                             <p class="text-title">HM</p>
-                            <p class="text-summary"><i>Letter Grade</i></p>
+                            <p class="text-summary"><i>Letter<br><br>Grade</i></p>
                         </th>
                     </tr>
                 </thead>
@@ -303,188 +329,24 @@
 
         <div class="div_line"></div>
 
-        <div class="student_data">
-            <table class="tg"> <!-- a-->
-              <thead> <!-- a -->
-                <tr> <!-- a -->
-  
-                  <td class="tg-0lax">
-                    <table class="tg">
-                      <tbody>
-                          <tr>
-                              <td class="tg-0lax">
-                                  <p class="text-title">Jumlah SKS</p>
-                                  <p class="text-summary"><i>Total Credits</i></p>
-                              </td>
-                              <td class="tg-0lax">
-                                <p class="text-title"> : {{.CreditsTotal}}</p>
-                                <p class="text-summary"><i>&nbsp;&nbsp;&nbsp;{{.CreditsTotal}}<i></p>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td class="tg-0lax">
-                                  <p class="text-title">Indeks Prestasi Kumulatif (IPK):</p>
-                                  <p class="text-summary"><i>Cumulative Grade Point Average</i></p>
-                              </td>
-                              <td class="tg-0lax">
-                                <p class="text-title"> : {{.GradeTotal}}</p>
-                                <p class="text-summary"><i>&nbsp;&nbsp;{{.GradeTotal}}<i></p>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td class="tg-0lax">
-                                  <p class="text-title">Lulus Pada</p>
-                                  <p class="text-summary"><i>Graduation Date</i></p>
-                              </td>
-                              <td class="tg-0lax">
-                                <p class="text-title"> : {{.GraduationDate}}</p>
-                                <p class="text-summary"><i>&nbsp;&nbsp;{{.GraduationDateEng}}<i></p>
-                              </td>
-                            </tr>
-                          <tr>
-                              <td class="tg-0lax">
-                                  <p class="text-title">Predikat</p>
-                                  <p class="text-summary"><i>Predicate</i></p>
-                              </td>
-                              <td class="tg-0lax">
-                                <p class="text-title"> : {{.PredikatMhs}}</p>
-                                <p class="text-summary"><i>&nbsp;&nbsp;{{.PredikatMhsEng}}<i></p>
-                              </td> 
-                          </tr>
-                          <tr>
-                            <td class="tg-0lax">
-                                <p class="text-title">Judul Skripsi/Tugas Akhir:</p>
-                            </td>
-                            <td class="tg-0lax">
-                                <p class="text-title"> : {{.JudulSkriptsi.JudulIndonesia}}</p>
-                            </td>
-                        </tr>
+        <div class="footer">
+            <div class="footer-content">
+                <table>
+                    <thead>
                         <tr>
-                            <td class="tg-0lax">
-                                <p class="text-title">Tittle of Thesis/Final Assignment</p>
-                            </td>
-                            <td class="tg-0lax">
-                                <p class="text-title"> : {{.JudulSkriptsi.JudulInggris}}</p>
-                            </td>
-                        </tr>
-                      </tbody>
-                  </table>
-                  </td>          
-                </tr>
-              </thead> <!-- a -->
-            </table><!-- a -->
-        </div>
-        <div class="div_line"></div>
-        <div class="student_data">
-            <table class="tg"> <!-- a-->
-              <thead> <!-- a -->
-                <tr> <!-- a -->
-  
-                  <td class="tg-0lax">
-                    <table class="tg">
-                      <tbody>
-                          <tr>
-                              <td class="tg-0lax">
-                                  <p class="text-title">Diterbitkan di:</p>
-                                  <p class="text-summary"><i>Issued in</i></p>
-                              </td>
-                              <td class="tg-0lax">
-                                <p class="text-title"> : {{.TempatTerbit}}</p>
-                                <p class="text-summary"><i>&nbsp;&nbsp;&nbsp;{{.TempatTerbit}}<i></p>
-                               </td> 
-                            </td>                             
-                          </tr>
-                          <tr>
-                              <td class="tg-0lax">
-                                  <p class="text-title">Tanggal:</p>
-                                  <p class="text-summary"><i>Date</i></p>
-                              </td>
-                            </td>
-                            <td class="tg-0lax">
-                                <p class="text-title"> : {{.TanggalTerbit}}</p>
-                                <p class="text-summary"><i>&nbsp;&nbsp;{{.TanggalTerbitEng}}<i></p>
-                            </td>
-                          </tr>
-                      </tbody>
-                  </table>
-                  </td>          
-                </tr>
-              </thead> <!-- a -->
-            </table><!-- a -->
-        </div>
-
-        <div class="student_data">
-            <table class="tg2"> <!-- a-->
-                <thead> <!-- a -->
-                    <tr> <!-- a -->
-
-                        <td class="tg-0lax">
-                            <table style="width: 150%;" class="tabel-bobot">
-                                <thead>
-                                    <tr class="tabel-head tabel_line">
-                                        <th>
-                                            <p class="text-title"> HURUF MUTU </p>
-                                            <p class="text-summary"><i>Grade Letter</i></p>
-                                        </th>
-                                        <th>
-
-                                        </th>
-                                        <th>
-                                            <p class="text-title"> BOBOT NILAI </p>
-                                            <p class="text-summary"><i>Weight</i></p>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Add table rows with data here -->
-                                    <tr>
-                                        <td>A</td>
-                                        <td> = </td>
-                                        <td>4.0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>AB</td>
-                                        <td> = </td>
-                                        <td>3.5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>B</td>
-                                        <td> = </td>
-                                        <td>3.0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>BC</td>
-                                        <td> = </td>
-                                        <td>2.5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>C</td>
-                                        <td> = </td>
-                                        <td>2.0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>D</td>
-                                        <td> = </td>
-                                        <td>1.0</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    
-                        <td class="tg-0lax">
-                            <div class="ttd-placeholder">
-                                <p><b>Dekan</b></p>
-                                <p>Fakultas {{.FakultasMhs}}</p>
-                                <div class="ttd-p2">
-
+                            <th class="footer-col">
+                                <p class="footer-title text-left"><b>Bersambung ke halaman berikutnya</b></p>
+                                <p class="footer-summary text-left"><i>Continue to next page</i></p>
+                            </th>
+                            <th>
+                                <div class="box-paraf">
+                                    <p style="font-size: 8pt; padding-left: 10px; padding-right: 10px; padding-top: -5px; padding-bottom: 40px;">Paraf</p>
                                 </div>
-                                <p><b>{{.NamaDekan}}</b></p>
-                                <p>NIK: {{.NikDekan}}</p>
-                            </div>
-                        </td>                
-                    </tr>
-                </thead> <!-- a -->
-            </table><!-- a -->
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div> <!-- content -->
 </body>
