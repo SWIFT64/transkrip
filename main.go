@@ -164,7 +164,6 @@ func main() {
 		ProdiMhs:       student.ProdiMhs,
 		ProdiMhsEng:    student.ProdiMhsEng,
 		NoTranskrip:    student.NoTranskrip,
-		Subjects:       student.Subjects[:42],
 	}
 
 	pdfPageTwo := PageTwoPDF{
@@ -172,7 +171,6 @@ func main() {
 		GradeTotal:        student.GradeTotal,
 		GraduationDate:    student.GraduationDate,
 		GraduationDateEng: student.GraduationDateEng,
-		Subjects:          student.Subjects[38:],
 		PredikatMhs:       student.PredikatMhs,
 		PredikatMhsEng:    student.PredikatMhsEng,
 		JudulSkriptsi:     student.JudulSkriptsi,
@@ -183,6 +181,14 @@ func main() {
 		NoTranskrip:       student.NoTranskrip,
 		FakultasMhs:       student.FakultasMhs,
 		NikDekan:          student.NikDekan,
+	}
+
+	switch len(student.Subjects) > 43 {
+	case true:
+		pdfPageOne.Subjects = student.Subjects[:42]
+		pdfPageTwo.Subjects = student.Subjects[43:]
+	case false:
+		pdfPageOne.Subjects = student.Subjects
 	}
 
 	// Read the HTML template from the file
