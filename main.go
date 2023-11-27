@@ -6,11 +6,14 @@ import (
 	"encoding/json"
 	"fmt"
 	"html/template"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
 	"strconv"
+
+	"github.com/pdfcpu/pdfcpu/pkg/api"
 
 	"github.com/chromedp/cdproto/cdp"
 
@@ -284,13 +287,6 @@ func main() {
 	// Print the page to PDF
 	var pdfData []byte
 	var pdfData2 []byte
-	//err = chromedp.Run(ctx,
-	//	chromedp.ActionFunc(func(ctx context.Context) error {
-	//		var err error
-	//		pdfData, _, err = page.PrintToPDF().Do(ctx)
-	//		return err
-	//	}),
-	//)
 
 	// Generate Page 1
 	err = chromedp.Run(ctx,
@@ -361,6 +357,39 @@ func main() {
 	}
 
 	log.Printf("PDF file generated successfully for student %d.\n", student.NomorIndukMhs)
+
+	f1, err := os.Open("output_" + strconv.Itoa(student.NomorIndukMhs) + ".pdf")
+	if err != nil {
+		log.Println("Error reading PDF 1 file:", err)
+		return
+	}
+	defer f1.Close()
+
+	f2, err := os.Open("output2_" + strconv.Itoa(student.NomorIndukMhs) + ".pdf")
+	if err != nil {
+		log.Println("Error reading PDF 2 file:", err)
+		return
+	}
+	defer f2.Close()
+
+	w, err := MergeTwoPages(f1, f2)
+	if err != nil {
+		log.Println("Error merging PDF files:", err)
+		return
+	}
+
+	f, err := os.Create("merged.pdf")
+	if err != nil {
+		log.Println("Error merging PDF files:", err)
+	}
+	defer f.Close()
+
+	_, err = f.Write(w.Bytes())
+	if err != nil {
+		log.Println("Error merging PDF files:", err)
+	}
+
+	log.Printf("Merged PDF file generated successfully for student %d.\n", student.NomorIndukMhs)
 }
 
 // Function to read configuration from a file
@@ -378,4 +407,9 @@ func readConfig(filename string) (Config, error) {
 	}
 
 	return config, nil
+}
+
+func MergeTwoPages(pageOne, pageTwo io.ReadSeeker) (merged *bytes.Buffer, err error) {
+	err = api.MergeRaw([]io.ReadSeeker{pageOne, pageTwo}, merged, nil)
+	return
 }

@@ -45,7 +45,7 @@ require (
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	github.com/whatsauth/watoken v0.1.3 // indirect
 	golang.org/x/crypto v0.15.0 // indirect
-	golang.org/x/image v0.11.0 // indirect
+	golang.org/x/image v0.14.0 // indirect
 	golang.org/x/net v0.18.0 // indirect
 	golang.org/x/sys v0.14.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
