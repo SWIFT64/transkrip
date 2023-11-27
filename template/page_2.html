@@ -139,16 +139,16 @@
 
         .tabel-nilai th:nth-child(2),
         .tabel-nilai td:nth-child(2) {
-            width: 40%; /* Sesuaikan lebar kolom Mata Kuliah */
+            width: 45%; /* Sesuaikan lebar kolom Mata Kuliah */
         }
         .tabel-nilai th:nth-child(3),
         .tabel-nilai td:nth-child(3),
         .tabel-nilai th:nth-child(4),
         .tabel-nilai td:nth-child(4) {
-            width: 10%; /* Sesuaikan lebar kolom SKS dan Grade */
+            width: 7.5%; /* Sesuaikan lebar kolom SKS dan Grade */
         }
         .grade-content {
-            line-height: 0.1;
+            line-height: 0.8;
         }
         .grade-title {
             font-size: 7pt;
@@ -157,6 +157,7 @@
         .grade-summary {
             font-size: 5pt;
             word-wrap: break-word;
+            line-height: 0.1;
         }
         .text-left {
             text-align: left;
@@ -213,7 +214,8 @@
                 <tbody>
                     {{range $index, $subject := .Subjects}}
                     <tr class="grade-content">
-                        <td><p class="grade-title">{{.Index}}</p></td>
+                        <td>
+                            <p class="grade-title">{{.Index}}</p></td>
                         <td>
                             <p class="grade-title text-left">{{$subject.Subjname}}</p>
                             <p class="grade-summary text-left"><i>{{$subject.Subjnameeng}}</i></p>

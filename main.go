@@ -185,8 +185,8 @@ func main() {
 
 	switch len(student.Subjects) > 43 {
 	case true:
-		pdfPageOne.Subjects = student.Subjects[:42]
-		pdfPageTwo.Subjects = student.Subjects[43:]
+		pdfPageOne.Subjects = student.Subjects[:38]
+		pdfPageTwo.Subjects = student.Subjects[38:]
 	case false:
 		pdfPageOne.Subjects = student.Subjects
 	}
