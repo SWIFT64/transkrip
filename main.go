@@ -10,7 +10,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"strconv"
 
 	"github.com/chromedp/cdproto/cdp"
 
@@ -27,7 +26,7 @@ type Config struct {
 
 type Data struct {
 	NamaMhs           string        `json:"nama_mhs"`
-	NomorIndukMhs     int           `json:"nomor_induk_mhs"`
+	NomorIndukMhs     string          `json:"nomor_induk_mhs"`
 	TtlMhs            string        `json:"ttl_mhs"`
 	TtlMhsEng         string        `json:"ttl_mhs_eng"`
 	TahunMasukMhs     string        `json:"tahun_masuk_mhs"`
@@ -48,12 +47,12 @@ type Data struct {
 	TanggalTerbit     string        `json:"tanggal_terbit"`
 	TanggalTerbitEng  string        `json:"tanggal_terbit_eng"`
 	NamaDekan         string        `json:"nama_dekan"`
-	NikDekan          int           `json:"nik_dekan"`
+	NikDekan          string           `json:"nik_dekan"`
 }
 
 type PageOnePDF struct {
 	NamaMhs        string    `json:"nama_mhs"`
-	NomorIndukMhs  int       `json:"nomor_induk_mhs"`
+	NomorIndukMhs  string       `json:"nomor_induk_mhs"`
 	TtlMhs         string    `json:"ttl_mhs"`
 	TtlMhsEng      string    `json:"ttl_mhs_eng"`
 	TahunMasukMhs  string    `json:"tahun_masuk_mhs"`
@@ -80,7 +79,7 @@ type PageTwoPDF struct {
 	TanggalTerbitEng string `json:"tanggal_terbit_eng"`
 	NamaDekan        string `json:"nama_dekan"`
 	NoTranskrip      string `json:"no_transkrip"`
-	NikDekan         int    `json:"nik_dekan"`
+	NikDekan         string    `json:"nik_dekan"`
 }
 
 type Subject struct {
@@ -347,13 +346,13 @@ func main() {
 	}
 
 	// Write the PDF data to a file
-	pdfFileName := "output_" + strconv.Itoa(student.NomorIndukMhs) + ".pdf"
+	pdfFileName := "output_" + student.NomorIndukMhs + ".pdf"
 	err = os.WriteFile(pdfFileName, pdfData, 0644)
 	if err != nil {
 		log.Println("Error writing PDF file:", err)
 		return
 	}
-	pdfFileName2 := "output2_" + strconv.Itoa(student.NomorIndukMhs) + ".pdf"
+	pdfFileName2 := "output2_" + student.NomorIndukMhs + ".pdf"
 	err = os.WriteFile(pdfFileName2, pdfData2, 0644)
 	if err != nil {
 		log.Println("Error writing PDF file:", err)
