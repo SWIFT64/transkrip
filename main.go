@@ -47,7 +47,7 @@ type Data struct {
 	TanggalTerbit     string        `json:"tanggal_terbit"`
 	TanggalTerbitEng  string        `json:"tanggal_terbit_eng"`
 	NamaDekan         string        `json:"nama_dekan"`
-	NikDekan          string           `json:"nik_dekan"`
+	NikDekan          string        `json:"nik_dekan"`
 }
 
 type PageOnePDF struct {
@@ -75,6 +75,7 @@ type PageTwoPDF struct {
 	TempatTerbit      string        `json:"tempat_terbit"`
 	TanggalTerbit     string        `json:"tanggal_terbit"`
 	FakultasMhs       string        `json:"fakultas_mhs"`
+	FakultasMhsEng string    `json:"fakultas_mhs_eng"`
 
 	TanggalTerbitEng string `json:"tanggal_terbit_eng"`
 	NamaDekan        string `json:"nama_dekan"`
@@ -179,13 +180,14 @@ func main() {
 		NamaDekan:         student.NamaDekan,
 		NoTranskrip:       student.NoTranskrip,
 		FakultasMhs:       student.FakultasMhs,
+		FakultasMhsEng:    student.FakultasMhsEng,
 		NikDekan:          student.NikDekan,
 	}
 
 	switch len(student.Subjects) > 43 {
 	case true:
-		pdfPageOne.Subjects = student.Subjects[:38]
-		pdfPageTwo.Subjects = student.Subjects[38:]
+		pdfPageOne.Subjects = student.Subjects[:45]
+		pdfPageTwo.Subjects = student.Subjects[44:]
 	case false:
 		pdfPageOne.Subjects = student.Subjects
 	}
