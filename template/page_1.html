@@ -113,9 +113,6 @@
         thead {
             display: table-header-group;
         }
-        tfoot {
-            display: table-footer-group;
-        }
         hr {
             padding-top: 5px;
             padding-bottom: 5px;
@@ -155,7 +152,6 @@
         }
         .grade-title {
             font-size: 8pt;
-            word-wrap: break-word;
             margin-top: 0;
             margin-bottom: 0;
             padding-top: 5px;
@@ -163,7 +159,6 @@
         }
         .grade-summary {
             font-size: 7pt;
-            word-wrap: break-word;
             line-height: 0.1;
             margin-top: 2px;
             margin-bottom: 2px;
@@ -244,6 +239,9 @@
         .div_line {
             width: 100%;
             border-bottom: 1px solid #000; /* You can customize the color and style */
+        }
+        .regulator-space {
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -361,6 +359,30 @@
                         </th>
                     </tr>
                 </thead>
+                <thead>
+                    <tr class="tabel-head tabel_line">
+                        <th>
+                            <p class="headg-title">NO.</p>
+                            <p class="headg-summary"><i>No.</i></p>
+                        </th>
+                        <th>
+                            <p class="headg-title">MATA KULIAH</p>
+                            <p class="headg-summary"><i>Course</i></p>
+                        </th>
+                        <th>
+                            <p class="headg-title">SKS</p>
+                            <p class="headg-summary"><i>Credits</i></p>
+                        </th>
+                        <th>
+                            <p class="headg-title">HM</p>
+                            <p class="headg-summary"><i>Letter<br><br>Grade</i></p>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="column-nilai regulator-space">
+            <table class="tabel-nilai">
                 <tbody>
                     {{range $index, $subject := .Subjects}}
                     <tr class="grade-content">
