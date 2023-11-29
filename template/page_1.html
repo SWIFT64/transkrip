@@ -58,7 +58,7 @@
             font-size: 12pt;
         }
         .text-summary {
-            font-size: 10pt;
+            font-size:10pt;
         }
         .place-foto {
             width: 2.79cm;
@@ -70,7 +70,7 @@
         .column-nilai {
             column-count: 2;
             column-gap: 2.5px;
-            margin-top: 5px;
+            margin-top: 2.5px;
         }
         .tabel-nilai {
             width: 100%;
@@ -188,10 +188,6 @@
             border-top: 1px solid #000; /* You can customize the color and style */
             border-bottom: 1px solid #000; /* You can customize the color and style */
         }
-        .div_line {
-            width: 100%;
-            border-bottom: 1px solid #000; /* You can customize the color and style */
-        }
         .footer {
             bottom: 0;
             position: fixed;
@@ -218,10 +214,35 @@
             border: 0px solid black; /* Set the border properties (width, style, and color) */
             font-size: 8pt;
             margin-left: 175px;
+            padding-top: 8px;
         }
         .page-num {
             text-align: right;
             font-size: 10pt;
+        }
+        .headg-title {
+            font-size: 10pt;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+        .headg-summary {
+            font-size: 8pt;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+        .small-space {
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        .div_line {
+            width: 100%;
+            border-bottom: 1px solid #000; /* You can customize the color and style */
         }
     </style>
 </head>
@@ -242,7 +263,7 @@
                         <td style="width: 70%;" class="tg-0lax2">
                             <table class="tg">
                                 <tbody class="student-id-box">
-                                    <tr>
+                                    <tr class="small-space">
                                         <td class="tg-0lax2">
                                             <p class="text-title">Nama</p>
                                             <p class="text-summary"><i>Name</i></p>
@@ -251,7 +272,7 @@
                                             <p class="text-title"> : {{.NamaMhs}}</p>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr class="small-space">
                                         <td class="tg-0lax2">
                                             <p class="text-title">NPM</p>
                                             <p class="text-summary"><i>Student Number</i></p>
@@ -260,7 +281,7 @@
                                             <p class="text-title"> : {{.NomorIndukMhs}}</p>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr class="small-space">
                                         <td class="tg-0lax2">
                                             <p class="text-title">Tempat, Tgl. Lahir</p>
                                             <p class="text-summary"><i>Place/date of Birth</i></p>
@@ -270,7 +291,7 @@
                                             <p class="text-summary"><i>&nbsp;&nbsp;&nbsp;{{.TtlMhsEng}}<i></p>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr class="small-space">
                                         <td class="tg-0lax2">
                                             <p class="text-title">Tahun Masuk</p>
                                             <p class="text-summary"><i>Entry Year</i></p>
@@ -279,7 +300,7 @@
                                             <p class="text-title"> : {{.TahunMasukMhs}}</p>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr class="small-space">
                                         <td class="tg-0lax2">
                                             <p class="text-title">Fakultas</p>
                                             <p class="text-summary"><i>Faculty</i></p>
@@ -289,7 +310,7 @@
                                             <p class="text-summary"><i>&nbsp;&nbsp;&nbsp;{{.FakultasMhsEng}}<i></p>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr class="small-space">
                                         <td class="tg-0lax2">
                                             <p class="text-title">Program Studi</p>
                                             <p class="text-summary"><i>Study Program</i></p>
@@ -322,20 +343,20 @@
                 <thead>
                     <tr class="tabel-head tabel_line">
                         <th>
-                            <p class="grade-title">NO.</p>
-                            <p class="grade-summary"><i>No.</i></p>
+                            <p class="headg-title">NO.</p>
+                            <p class="headg-summary"><i>No.</i></p>
                         </th>
                         <th>
-                            <p class="grade-title">MATA KULIAH</p>
-                            <p class="grade-summary"><i>Course</i></p>
+                            <p class="headg-title">MATA KULIAH</p>
+                            <p class="headg-summary"><i>Course</i></p>
                         </th>
                         <th>
-                            <p class="grade-title">SKS</p>
-                            <p class="grade-summary"><i>Credits</i></p>
+                            <p class="headg-title">SKS</p>
+                            <p class="headg-summary"><i>Credits</i></p>
                         </th>
                         <th>
-                            <p class="grade-title">HM</p>
-                            <p class="grade-summary"><i>Letter<br><br>Grade</i></p>
+                            <p class="headg-title">HM</p>
+                            <p class="headg-summary"><i>Letter<br><br>Grade</i></p>
                         </th>
                     </tr>
                 </thead>
