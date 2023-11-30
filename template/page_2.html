@@ -126,9 +126,9 @@
 
         .ttd-placeholder {
             text-align: center;
-            margin-left: 400px;
+            margin-left: 40px;
             align-items: start;
-            padding-bottom: 1cm;
+            padding-bottom: 40px;
         }
 
         .ttd-p2 {
@@ -225,6 +225,7 @@
         .page-num {
             text-align: right;
             font-size: 10pt;
+            padding-right: 7px;
         }
 
         .page-num p {
@@ -256,6 +257,9 @@
             padding-bottom: 1px;
             margin-top: 3px;
             margin-bottom: 3px;
+        }
+        .hm-text {
+            font-size: 10px;
         }
 </style>
 </head>
@@ -345,9 +349,12 @@
                             <p class="text2-title">Jumlah SKS</p>
                             <p class="text2-summary"><i>Total Credits</i></p>
                         </td>
+                        <td style="width: 2%;" class="tg-0lax">
+                            <p class="text2-title"> : <br></p>
+                        </td>
                         <td class="tg-0lax">
-                          <p class="text2-title"> : {{.CreditsTotal}}</p>
-                          <p class="text2-summary"><i>&nbsp;&nbsp;&nbsp;{{.CreditsTotal}}<i></p>
+                          <p class="text2-title">{{.CreditsTotal}}</p>
+                          <p class="text2-summary"><i>{{.CreditsTotal}}<i></p>
                         </td>
                     </tr>
                     <tr>
@@ -355,9 +362,12 @@
                             <p class="text2-title">Indeks Prestasi Kumulatif (IPK):</p>
                             <p class="text2-summary"><i>Cumulative Grade Point Average</i></p>
                         </td>
+                        <td style="width: 2%;" class="tg-0lax">
+                            <p class="text2-title"> : <br></p>
+                        </td>
                         <td class="tg-0lax">
-                          <p class="text2-title"> : {{.GradeTotal}}</p>
-                          <p class="text2-summary"><i>&nbsp;&nbsp;{{.GradeTotal}}<i></p>
+                          <p class="text2-title">{{.GradeTotal}}</p>
+                          <p class="text2-summary"><i>{{.GradeTotal}}<i></p>
                         </td>
                     </tr>
                     <tr>
@@ -365,9 +375,12 @@
                             <p class="text2-title">Lulus Pada</p>
                             <p class="text2-summary"><i>Graduation Date</i></p>
                         </td>
+                        <td style="width: 2%;" class="tg-0lax">
+                            <p class="text2-title"> : <br></p>
+                        </td>
                         <td class="tg-0lax">
-                          <p class="text2-title"> : {{.GraduationDate}}</p>
-                          <p class="text2-summary"><i>&nbsp;&nbsp;{{.GraduationDateEng}}<i></p>
+                          <p class="text2-title">{{.GraduationDate}}</p>
+                          <p class="text2-summary"><i>{{.GraduationDateEng}}<i></p>
                         </td>
                       </tr>
                     <tr>
@@ -375,25 +388,34 @@
                             <p class="text2-title">Predikat</p>
                             <p class="text2-summary"><i>Predicate</i></p>
                         </td>
+                        <td style="width: 2%;" class="tg-0lax">
+                            <p class="text2-title"> : <br></p>
+                        </td>
                         <td class="tg-0lax">
-                          <p class="text2-title"> : {{.PredikatMhs}}</p>
-                          <p class="text2-summary"><i>&nbsp;&nbsp;{{.PredikatMhsEng}}<i></p>
+                          <p class="text2-title">{{.PredikatMhs}}</p>
+                          <p class="text2-summary"><i>{{.PredikatMhsEng}}<i></p>
                         </td> 
                     </tr>
                     <tr>
                       <td style="width: 25%;" style="line-height: 1;" class="tg-0lax">
                           <p class="text2-title">Judul Skripsi/Tugas Akhir:</p>
                       </td>
+                      <td style="width: 2%;" class="tg-0lax">
+                        <p class="text2-title"> : <br></p>
+                    </td>
                       <td style="line-height: 1;" class="tg-0lax">
-                          <p class="text2-title"> : {{.JudulSkriptsi.JudulIndonesia}}</p>
+                          <p class="text2-title">{{.JudulSkriptsi.JudulIndonesia}}</p>
                       </td>
                   </tr>
                   <tr style="width: 25%;" style="line-height: 1;">
                       <td class="tg-0lax">
                           <p class="text2-title">Tittle of Thesis/Final Assignment</p>
                       </td>
-                      <td class="tg-0lax">
-                          <p class="text2-title"> : {{.JudulSkriptsi.JudulInggris}}</p>
+                      <td style="width: 2%;" class="tg-0lax">
+                        <p class="text2-title"> : <br></p>
+                    </td>
+                    <td class="tg-0lax">
+                          <p class="text2-title">{{.JudulSkriptsi.JudulInggris}}</p>
                       </td>
                   </tr>
                 </tbody>
@@ -414,9 +436,12 @@
                                   <p class="text2-title">Diterbitkan di:</p>
                                   <p class="text2-summary"><i>Issued in</i></p>
                               </td>
-                              <td class="tg-0lax">
-                                <p class="text2-title"> : {{.TempatTerbit}}</p>
-                                <p class="text2-summary"><i>&nbsp;&nbsp;&nbsp;{{.TempatTerbit}}<i></p>
+                              <td style="width: 2%;" class="tg-0lax">
+                                <p class="text2-title"> : <br></p>
+                            </td>
+                            <td class="tg-0lax">
+                                <p class="text2-title">{{.TempatTerbit}}</p>
+                                <p class="text2-summary"><i>{{.TempatTerbit}}<i></p>
                                </td> 
                             </td>                             
                           </tr>
@@ -426,9 +451,13 @@
                                   <p class="text2-summary"><i>Date</i></p>
                               </td>
                             </td>
+                            <td style="width: 2%;" class="tg-0lax">
+                                <p class="text2-title"> : <br></p>
+                            </td>
+
                             <td class="tg-0lax">
-                                <p class="text2-title"> : {{.TanggalTerbit}}</p>
-                                <p class="text2-summary"><i>&nbsp;&nbsp;{{.TanggalTerbitEng}}<i></p>
+                                <p class="text2-title">{{.TanggalTerbit}}</p>
+                                <p class="text2-summary"><i>{{.TanggalTerbitEng}}<i></p>
                             </td>
                           </tr>
                       </tbody>
@@ -463,32 +492,32 @@
                                 </thead>
                                 <tbody class="div_line grade-title1">
                                     <!-- Add table rows with data here -->
-                                    <tr>
+                                    <tr class="hm-text">
                                         <td>A</td>
                                         <td> = </td>
                                         <td>4.0</td>
                                     </tr>
-                                    <tr>
+                                    <tr class="hm-text">
                                         <td>AB</td>
                                         <td> = </td>
                                         <td>3.5</td>
                                     </tr>
-                                    <tr>
+                                    <tr class="hm-text">
                                         <td>B</td>
                                         <td> = </td>
                                         <td>3.0</td>
                                     </tr>
-                                    <tr>
+                                    <tr class="hm-text">
                                         <td>BC</td>
                                         <td> = </td>
                                         <td>2.5</td>
                                     </tr>
-                                    <tr>
+                                    <tr class="hm-text">
                                         <td>C</td>
                                         <td> = </td>
                                         <td>2.0</td>
                                     </tr>
-                                    <tr>
+                                    <tr class="hm-text">
                                         <td>D</td>
                                         <td> = </td>
                                         <td>1.0</td>
