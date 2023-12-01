@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!---
+    Template B digunakan jika Data mata kuliah kurang dari 42 data
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Transcript</title>
+    <style>
+        @page {
+            size: A4;
+            margin-top: 1.75cm;
+            margin-bottom: 0cm;
+        }
+        .content {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+        }
+        .tg  {
+            border-spacing:0;
+            line-height: 0.1;
+        }
+        .tg2  {
+            border-spacing:0;
+        }
+        .tg td{
+            padding: -5px
+        }
+        .tg th{
+            border-color:black;
+            border-style:solid;
+            border-width:1px;
+            word-break:unset;
+        }
+        .tg-0lax2{
+            padding-left: 10px;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .header {
+            line-height: 0.25;
+            text-align: center;
+        }
+        .header_title {
+            font-size: 14pt;
+        }
+        .header_summary {
+            font-size:10pt;
+        }
+        .header_no {
+            font-size: 12pt;
+        }
+        .text-title {
+            font-size: 12pt;
+        }
+        .text-summary {
+            font-size:10pt;
+        }
+        .text2-title {
+            font-size: 10pt;
+        }
+        .text2-summary {
+            font-size:8pt;
+        }
+        .place-foto {
+            width: 2.79cm;
+            height: 3.81cm;
+            border-style: ridge;
+            margin-left: 300px;
+            margin-bottom: 50px;
+        }
+        .column-nilai {
+            column-count: 2;
+            column-gap: 2.5px;
+            margin-top: 10px;
+        }
+        .tabel-nilai {
+            width: 100%;
+            border-collapse: collapse;
+            border: none;
+        }
+        .tabel-nilai th, .tabel-nilai td {
+            text-align: center;
+            width: 35%;
+        }
+        .tabel-nilai th {
+            background-color: #aaaaaa;
+        }
+        .tabel-bobot {
+            width: 100%;
+            border-collapse: collapse;
+            border: none;
+        }
+        .tabel-bobot th, .tabel-bobot td {
+            text-align: center;
+            width: 35%;
+        }
+        .tabel-bobot th {
+            background-color: #aaaaaa;
+        }
+        .tabel-bobot th:first-child,
+        .tabel-bobot td:first-child {
+            width: 20%; /* Sesuaikan lebar kolom Nomor/Index */
+        }
+
+        .tabel-bobot th:nth-child(2),
+        .tabel-bobot td:nth-child(2) {
+            width: 5%; /* Sesuaikan lebar kolom Mata Kuliah */
+        }
+        .tabel-bobot th:nth-child(3),
+        .tabel-bobot td:nth-child(3) {
+            width: 20%; /* Sesuaikan lebar kolom SKS dan Grade */
+        }
+
+        thead {
+            display: table-header-group;
+        }
+        hr {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .ttd-placeholder {
+            text-align: center;
+            margin-left: 450px;
+            align-items: start;
+            padding-bottom: 40px;
+        }
+
+        .ttd-p2 {
+            height: 47px;
+        }
+        .student-id-box {
+            line-height: 0.1;
+        }
+        .tabel-head {
+            line-height: 0.5;
+        }
+        .tabel-nilai th:first-child,
+        .tabel-nilai td:first-child {
+            width: 5%; /* Sesuaikan lebar kolom Nomor/Index */
+        }
+
+        .tabel-nilai th:nth-child(2),
+        .tabel-nilai td:nth-child(2) {
+            width: 40%; /* Sesuaikan lebar kolom Mata Kuliah */
+        }
+        .tabel-nilai th:nth-child(3),
+        .tabel-nilai td:nth-child(3),
+        .tabel-nilai th:nth-child(4),
+        .tabel-nilai td:nth-child(4) {
+            width: 10%; /* Sesuaikan lebar kolom SKS dan Grade */
+        }
+        .grade-content {
+            line-height: 1;
+        }
+        .grade-title {
+            font-size: 8pt;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-top: 5px;
+            padding-bottom: 0;
+        }
+        .grade-summary {
+            font-size: 7pt;
+            line-height: 0.1;
+            margin-top: 2px;
+            margin-bottom: 2px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+        .grade-index {
+            font-size: 8pt;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;            
+        }
+        .text-left {
+            text-align: left;
+        }
+        .footer {
+            display: table-footer-group;
+        }
+        .tabel_line {
+            width: 100%;
+            border-top: 1px solid #000; /* You can customize the color and style */
+            border-bottom: 1px solid #000; /* You can customize the color and style */
+        }
+        .div_line {
+            width: 100%;
+            border-bottom: 1px solid #000; /* You can customize the color and style */
+        }
+        .footer {
+            bottom: 0;
+            position: fixed;
+            margin-top: 15px;
+        }
+        .student_data {
+            margin-top: 0.5%;
+        }
+        .footer-content {
+            line-height: 0.1;
+        }
+        .footer-title {
+            font-size: 10pt;
+        }
+        .footer-summary {
+            font-size: 8pt;
+        }
+        .footer-col {
+            width: 75%;
+        }
+        .box-paraf {
+            width: 30x; /* Set the width of the box */
+            height: 45px; /* Set the height of the box */
+            border: 0px solid black; /* Set the border properties (width, style, and color) */
+            font-size: 8pt;
+            margin-left: 175px;
+        }
+        .page-num {
+            text-align: right;
+            font-size: 10pt;
+            padding-right: 7px;
+        }
+
+        .page-num p {
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+                .gb-title {
+            font-size: 6pt;
+        }
+        .gb-summary {
+            font-size: 5pt;
+        }
+        .dekan p {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .headg-title {
+            font-size: 10pt;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+        .headg-summary {
+            font-size: 8pt;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+        .hm-text {
+            font-size: 10px;
+        }
+</style>
+</head>
+
+<body>
+    <div class="content">
+        <p class="header_no">No: {{.NoTranskrip}}</p>
+        <div class="header">
+            <p class="header_title"><b>TRANSKRIP AKADEMIK</b></p>
+            <p class="header_summary"><i>ACADEMIC TRANSCRIPT</i></p>
+        </div>
+        <div class="page-num">
+            <p>Hal: 2</p>
+            <p style="font-size: 8pt;"><i>Page: 2</i></p>
+        </div>
+
+        <div class="div_line"></div>
+
+        <div class="student_data">
+            <table class="tg">
+                <tbody>
+                    <tr>
+                        <td style="width: 25%;" class="tg-0lax">
+                            <p class="text2-title">Jumlah SKS</p>
+                            <p class="text2-summary"><i>Total Credits</i></p>
+                        </td>
+                        <td style="width: 2%;" class="tg-0lax">
+                            <p class="text2-title"> : <br></p>
+                        </td>
+                        <td class="tg-0lax">
+                          <p class="text2-title">{{.CreditsTotal}}</p>
+                          <p class="text2-summary"><i>{{.CreditsTotal}}<i></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%;" class="tg-0lax">
+                            <p class="text2-title">Indeks Prestasi Kumulatif (IPK):</p>
+                            <p class="text2-summary"><i>Cumulative Grade Point Average</i></p>
+                        </td>
+                        <td style="width: 2%;" class="tg-0lax">
+                            <p class="text2-title"> : <br></p>
+                        </td>
+                        <td class="tg-0lax">
+                          <p class="text2-title">{{.GradeTotal}}</p>
+                          <p class="text2-summary"><i>{{.GradeTotal}}<i></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%;" class="tg-0lax">
+                            <p class="text2-title">Lulus Pada</p>
+                            <p class="text2-summary"><i>Graduation Date</i></p>
+                        </td>
+                        <td style="width: 2%;" class="tg-0lax">
+                            <p class="text2-title"> : <br></p>
+                        </td>
+                        <td class="tg-0lax">
+                          <p class="text2-title">{{.GraduationDate}}</p>
+                          <p class="text2-summary"><i>{{.GraduationDateEng}}<i></p>
+                        </td>
+                      </tr>
+                    <tr>
+                        <td style="width: 25%;" class="tg-0lax">
+                            <p class="text2-title">Predikat</p>
+                            <p class="text2-summary"><i>Predicate</i></p>
+                        </td>
+                        <td style="width: 2%;" class="tg-0lax">
+                            <p class="text2-title"> : <br></p>
+                        </td>
+                        <td class="tg-0lax">
+                          <p class="text2-title">{{.PredikatMhs}}</p>
+                          <p class="text2-summary"><i>{{.PredikatMhsEng}}<i></p>
+                        </td> 
+                    </tr>
+                    <tr>
+                      <td style="width: 25%;" style="line-height: 1;" class="tg-0lax">
+                          <p class="text2-title">Judul Skripsi/Tugas Akhir:</p>
+                      </td>
+                      <td style="width: 2%;" class="tg-0lax">
+                        <p class="text2-title"> : <br></p>
+                    </td>
+                      <td style="line-height: 1;" class="tg-0lax">
+                          <p class="text2-title">{{.JudulSkriptsi.JudulIndonesia}}</p>
+                      </td>
+                  </tr>
+                  <tr style="width: 25%;" style="line-height: 1;">
+                      <td class="tg-0lax">
+                          <p class="text2-title">Tittle of Thesis/Final Assignment</p>
+                      </td>
+                      <td style="width: 2%;" class="tg-0lax">
+                        <p class="text2-title"> : <br></p>
+                    </td>
+                    <td class="tg-0lax">
+                          <p class="text2-title">{{.JudulSkriptsi.JudulInggris}}</p>
+                      </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+
+        <div class="div_line"></div>
+        <div class="student_data">
+            <table class="tg"> <!-- a-->
+              <thead> <!-- a -->
+                <tr> <!-- a -->
+  
+                  <td class="tg-0lax">
+                    <table class="tg">
+                      <tbody>
+                          <tr>
+                              <td class="tg-0lax">
+                                  <p class="text2-title">Diterbitkan di:</p>
+                                  <p class="text2-summary"><i>Issued in</i></p>
+                              </td>
+                              <td style="width: 2%;" class="tg-0lax">
+                                <p class="text2-title"> : <br></p>
+                            </td>
+                            <td class="tg-0lax">
+                                <p class="text2-title">{{.TempatTerbit}}</p>
+                                <p class="text2-summary"><i>{{.TempatTerbit}}<i></p>
+                               </td> 
+                            </td>                             
+                          </tr>
+                          <tr>
+                              <td class="tg-0lax">
+                                  <p class="text2-title">Tanggal:</p>
+                                  <p class="text2-summary"><i>Date</i></p>
+                              </td>
+                            </td>
+                            <td style="width: 2%;" class="tg-0lax">
+                                <p class="text2-title"> : <br></p>
+                            </td>
+
+                            <td class="tg-0lax">
+                                <p class="text2-title">{{.TanggalTerbit}}</p>
+                                <p class="text2-summary"><i>{{.TanggalTerbitEng}}<i></p>
+                            </td>
+                          </tr>
+                      </tbody>
+                  </table>
+                  </td>          
+                </tr>
+              </thead> <!-- a -->
+            </table><!-- a -->
+        </div>
+
+        <div class="student_data">
+            <table class="tg2"> <!-- a-->
+                <thead> <!-- a -->
+                    <tr> <!-- a -->
+
+                        <td class="tg-0lax">
+                            <table style="width: 150%;" class="tabel-bobot">
+                                <thead>
+                                    <tr class="tabel-head tabel_line">
+                                        <th>
+                                            <p class="gb-title"> HURUF MUTU </p>
+                                            <p class="gb-summary"><i>Grade Letter</i></p>
+                                        </th>
+                                        <th>
+
+                                        </th>
+                                        <th>
+                                            <p class="gb-title"> BOBOT NILAI </p>
+                                            <p class="gb-summary"><i>Weight</i></p>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="div_line grade-title1">
+                                    <!-- Add table rows with data here -->
+                                    <tr class="hm-text">
+                                        <td>A</td>
+                                        <td> = </td>
+                                        <td>4.0</td>
+                                    </tr>
+                                    <tr class="hm-text">
+                                        <td>AB</td>
+                                        <td> = </td>
+                                        <td>3.5</td>
+                                    </tr>
+                                    <tr class="hm-text">
+                                        <td>B</td>
+                                        <td> = </td>
+                                        <td>3.0</td>
+                                    </tr>
+                                    <tr class="hm-text">
+                                        <td>BC</td>
+                                        <td> = </td>
+                                        <td>2.5</td>
+                                    </tr>
+                                    <tr class="hm-text">
+                                        <td>C</td>
+                                        <td> = </td>
+                                        <td>2.0</td>
+                                    </tr>
+                                    <tr class="hm-text">
+                                        <td>D</td>
+                                        <td> = </td>
+                                        <td>1.0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    
+                        <td class="tg-0lax">
+                            <div class="ttd-placeholder">
+                                <div class="dekan">
+                                    <p>Dekan</p>
+                                    <p><i>Dean</i></p>
+                                </div>
+                                <div class="ttd-p2">
+                                    <div class="dekan">
+                                        <p>{{.FakultasMhs}}</p>
+                                        <p><i>{{.FakultasMhsEng}}</i></p>
+                                    </div>
+                                <div class="ttd-p2">
+                                </div>
+                                <div class="dekan">
+                                    <p><b>{{.NamaDekan}}</b></p>
+                                    <p>NIK: {{.NikDekan}}</p>
+                                </div>
+                            </div>
+                        </td>                
+                     </tr>
+                </thead> <!-- a -->
+            </table><!-- a -->
+        </div>
+    </div> <!-- content -->
+</body>
+
+</html>

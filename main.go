@@ -193,13 +193,22 @@ func main() {
 	}
 
 	// Read the HTML template from the file
-	templateFile1 := "template/page_1.html"
-	templateFile2 := "template/page_2.html"
+	var templateFile1, templateFile2 string
+
+	switch len(student.Subjects) > 43 {
+	case true:
+		templateFile1 = "template/page_1.html"
+		templateFile2 = "template/page_2a.html"
+	case false:
+		templateFile1 = "template/page_1.html"
+		templateFile2 = "template/page_2b.html"
+	}
+	
 	htmlTemplate1, err := os.ReadFile(templateFile1)
 	if err != nil {
 		panic(err)
 	}
-
+	
 	htmlTemplate2, err := os.ReadFile(templateFile2)
 	if err != nil {
 		panic(err)
