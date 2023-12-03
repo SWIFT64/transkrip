@@ -1,0 +1,142 @@
+@page {
+    size: A4;
+    margin-top: 1.75cm;
+    margin-bottom: 0cm;
+}
+.header {
+    line-height: 0.25;
+    text-align: center;
+}
+.header_title {
+    font-size: 14pt;
+}
+.header_summary {
+    font-size:10pt;
+}
+.header_no {
+    font-size: 12pt;
+}
+
+.student_data th:first-child,
+.student_data td:first-child {
+    width: 28%;
+    align-items: start;
+}
+
+.student_data th:nth-child(2),
+.student_data td:nth-child(2) {
+    width: 2%;
+    align-items: start;
+}
+.student_data th:nth-child(3),
+.student_data td:nth-child(3){
+    width: 70%;
+    align-items: start;
+}
+
+.data-primary {
+    font-size: 12pt;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.data-secondary {
+    font-size: 10pt;
+    font-style: italic;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.top-0 {
+    top: 0;
+}
+
+.col-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.left-column {
+    flex: 0 0 85%;
+    text-align: left;    
+}
+
+.right-column {
+    flex: 0 0 15%;
+    text-align: right;    
+}
+
+.text-left {
+    text-align: left;    
+}
+
+.text-right {
+    text-align: right;    
+}
+
+.place-foto {
+    width: 2.79cm;
+    height: 3.81cm;
+    border-style: ridge;
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.column-nilal {
+    column-count: 2;
+    column-gap: 0;
+}
+
+.tabel-nilai {
+    border-collapse: collapse;
+    border: none;
+}
+
+.tabel-nilai-header {
+    display: table-header-group;
+    width: 100%;
+}
+
+.tabel-nilai-body {
+    display: table-header-group;
+    width: 100%;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.tabel-nilai th:first-child,
+.tabel-nilai td:first-child {
+    width: 5%;
+}
+
+.tabel-nilai th:nth-child(2),
+.tabel-nilai td:nth-child(2) {
+    width: 45%;
+}
+.tabel-nilai th:nth-child(3),
+.tabel-nilai td:nth-child(3),
+.tabel-nilai th:nth-child(4),
+.tabel-nilai td:nth-child(4) {
+    width: 10%;
+}
+
+.tabel-nilai-primary {
+    font-size: 10pt;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.tabel-nilai-secondary {
+    font-size: 10pt;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}

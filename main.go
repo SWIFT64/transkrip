@@ -26,7 +26,7 @@ type Config struct {
 
 type Data struct {
 	NamaMhs           string        `json:"nama_mhs"`
-	NomorIndukMhs     string          `json:"nomor_induk_mhs"`
+	NomorIndukMhs     string        `json:"nomor_induk_mhs"`
 	TtlMhs            string        `json:"ttl_mhs"`
 	TtlMhsEng         string        `json:"ttl_mhs_eng"`
 	TahunMasukMhs     string        `json:"tahun_masuk_mhs"`
@@ -52,14 +52,14 @@ type Data struct {
 
 type PageOnePDF struct {
 	NamaMhs        string    `json:"nama_mhs"`
-	NomorIndukMhs  string       `json:"nomor_induk_mhs"`
+	NomorIndukMhs  string    `json:"nomor_induk_mhs"`
 	TtlMhs         string    `json:"ttl_mhs"`
 	TtlMhsEng      string    `json:"ttl_mhs_eng"`
 	TahunMasukMhs  string    `json:"tahun_masuk_mhs"`
-	FakultasMhs    string    `json:"fakultas_mhs"`
-	FakultasMhsEng string    `json:"fakultas_mhs_eng"`
 	ProdiMhs       string    `json:"prodi_mhs"`
 	ProdiMhsEng    string    `json:"prodi_mhs_eng"`
+	FakultasMhs    string    `json:"fakultas_mhs"`
+	FakultasMhsEng string    `json:"fakultas_mhs_eng"`
 	NoTranskrip    string    `json:"no_transkrip"`
 	Subjects       []Subject `json:"subjects"`
 }
@@ -75,12 +75,12 @@ type PageTwoPDF struct {
 	TempatTerbit      string        `json:"tempat_terbit"`
 	TanggalTerbit     string        `json:"tanggal_terbit"`
 	FakultasMhs       string        `json:"fakultas_mhs"`
-	FakultasMhsEng string    `json:"fakultas_mhs_eng"`
+	FakultasMhsEng    string        `    json:"fakultas_mhs_eng"`
 
 	TanggalTerbitEng string `json:"tanggal_terbit_eng"`
 	NamaDekan        string `json:"nama_dekan"`
 	NoTranskrip      string `json:"no_transkrip"`
-	NikDekan         string    `json:"nik_dekan"`
+	NikDekan         string `json:"nik_dekan"`
 }
 
 type Subject struct {
@@ -184,10 +184,10 @@ func main() {
 		NikDekan:          student.NikDekan,
 	}
 
-	switch len(student.Subjects) > 43 {
+	switch len(student.Subjects) > 40 {
 	case true:
-		pdfPageOne.Subjects = student.Subjects[:42]
-		pdfPageTwo.Subjects = student.Subjects[42:]
+		pdfPageOne.Subjects = student.Subjects[:40]
+		pdfPageTwo.Subjects = student.Subjects[40:]
 	case false:
 		pdfPageOne.Subjects = student.Subjects
 	}
@@ -195,7 +195,7 @@ func main() {
 	// Read the HTML template from the file
 	var templateFile1, templateFile2 string
 
-	switch len(student.Subjects) > 43 {
+	switch len(student.Subjects) > 40 {
 	case true:
 		templateFile1 = "template/page_1.html"
 		templateFile2 = "template/page_2a.html"
