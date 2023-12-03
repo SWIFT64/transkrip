@@ -264,7 +264,23 @@
         .hm-text {
             font-size: 10px;
         }
-</style>
+        .notatio  {
+            padding-top: 0;
+            margin-top: 0;
+            top: 0;
+        }
+        .notatio  {
+            padding-top: 0;
+            margin-bottom: 10px;
+            top: 0;
+        }
+        .zero-mp {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-top: 3px;
+            padding-bottom: 7.5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -285,42 +301,42 @@
             <table class="tg">
                 <tbody>
                     <tr>
-                        <td style="width: 25%;" class="tg-0lax">
-                            <p class="text2-title">Jumlah SKS</p>
-                            <p class="text2-summary"><i>Total Credits</i></p>
+                        <td style="width: 25%;" class="zero-mp tg-0lax">
+                            <p class="zero-mp text2-title">Jumlah SKS</p>
+                            <p class="zero-mp text2-summary"><i>Total Credits</i></p>
                         </td>
-                        <td style="width: 2%;" class="tg-0lax">
-                            <p class="text2-title"> : <br></p>
+                        <td style="width: 2%;" class="zero-mp tg-0lax">
+                            <p class="zero-mp text2-title notation"> : <br><br><br><br><br><br><br><br><br><br><br></p>
                         </td>
-                        <td class="tg-0lax">
-                          <p class="text2-title">{{.CreditsTotal}}</p>
-                          <p class="text2-summary"><i>{{.CreditsTotal}}<i></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 25%;" class="tg-0lax">
-                            <p class="text2-title">Indeks Prestasi Kumulatif (IPK)</p>
-                            <p class="text2-summary"><i>Cumulative Grade Point Average</i></p>
-                        </td>
-                        <td style="width: 2%;" class="tg-0lax">
-                            <p class="text2-title"> : <br></p>
-                        </td>
-                        <td class="tg-0lax">
-                          <p class="text2-title">{{.GradeTotal}}</p>
-                          <p class="text2-summary"><i>{{.GradeTotal}}<i></p>
+                        <td class="zero-mp tg-0lax">
+                          <p class="zero-mp text2-title">{{.CreditsTotal}}</p>
+                          <p class="zero-mp text2-summary"><i>{{.CreditsTotal}}<i></p>
                         </td>
                     </tr>
                     <tr>
-                        <td style="width: 25%;" class="tg-0lax">
-                            <p class="text2-title">Lulus Pada</p>
-                            <p class="text2-summary"><i>Graduation Date</i></p>
+                        <td style="width: 25%;" class="zero-mp tg-0lax">
+                            <p class="zero-mp text2-title">Indeks Prestasi Kumulatif (IPK)</p>
+                            <p class="zero-mp text2-summary"><i>Cumulative Grade Point Average</i></p>
                         </td>
                         <td style="width: 2%;" class="tg-0lax">
-                            <p class="text2-title"> : <br></p>
+                            <p class="zero-mp text2-title notation"> : <br><br><br><br><br><br><br><br><br></p>
                         </td>
-                        <td class="tg-0lax">
-                          <p class="text2-title">{{.GraduationDate}}</p>
-                          <p class="text2-summary"><i>{{.GraduationDateEng}}<i></p>
+                        <td class="zero-mp tg-0lax">
+                          <p class="zero-mp text2-title">{{.GradeTotal}}</p>
+                          <p class="zero-mp text2-summary"><i>{{.GradeTotal}}<i></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%;" class="zero-mp tg-0lax">
+                            <p class="zero-mp text2-title">Lulus Pada</p>
+                            <p class="zero-mp text2-summary"><i>Graduation Date</i></p>
+                        </td>
+                        <td style="width: 2%;" class="zero-mp tg-0lax">
+                            <p class="zero-mp text2-title notation"> : <br><br><br><br><br><br><br><br><br><br><br></p>
+                        </td>
+                        <td class="zero-mp tg-0lax">
+                          <p class="zero-mp text2-title">{{.GraduationDate}}</p>
+                          <p class="zero-mp ext2-summary"><i>{{.GraduationDateEng}}<i></p>
                         </td>
                       </tr>
                     <tr>
@@ -329,7 +345,7 @@
                             <p class="text2-summary"><i>Predicate</i></p>
                         </td>
                         <td style="width: 2%;" class="tg-0lax">
-                            <p class="text2-title"> : <br></p>
+                            <p class="text2-title notation"> : <br><br><br><br><br><br><br><br><br><br><br></p>
                         </td>
                         <td class="tg-0lax">
                           <p class="text2-title">{{.PredikatMhs}}</p>
@@ -341,7 +357,7 @@
                           <p class="text2-title">Judul Skripsi/Tugas Akhir</p>
                       </td>
                       <td style="width: 2%;" class="tg-0lax">
-                        <p class="text2-title"> : <br></p>
+                        <p class="text2-title notation"> : <br><br><br><br><br><br><br><br><br><br><br></p>
                     </td>
                       <td style="line-height: 1;" class="tg-0lax">
                           <p class="text2-title">{{.JudulSkriptsi.JudulIndonesia}}</p>
@@ -352,7 +368,7 @@
                           <p class="text2-title">Tittle of Thesis/Final Assignment</p>
                       </td>
                       <td style="width: 2%;" class="tg-0lax">
-                        <p class="text2-title"> : <br></p>
+                        <p class="text2-title notation"> : <br><br><br><br><br><br><br><br><br><br><br></p>
                     </td>
                     <td class="tg-0lax">
                           <p class="text2-title">{{.JudulSkriptsi.JudulInggris}}</p>
@@ -372,30 +388,30 @@
                     <table class="tg">
                       <tbody>
                           <tr>
-                              <td class="tg-0lax">
+                              <td class="tg-0lax" style="height: 0;">
                                   <p class="text2-title">Diterbitkan di</p>
                                   <p class="text2-summary"><i>Issued in</i></p>
                               </td>
-                              <td style="width: 2%;" class="tg-0lax">
-                                <p class="text2-title"> : <br></p>
+                              <td style="width: 2%;height: 0;" class="tg-0lax">
+                                <p class="text2-title notation"> : <br><br><br><br><br><br><br><br><br><br><br></p>
                             </td>
-                            <td class="tg-0lax">
+                            <td class="tg-0lax"style="height: 0;">
                                 <p class="text2-title">{{.TempatTerbit}}</p>
                                 <p class="text2-summary"><i>{{.TempatTerbit}}<i></p>
                                </td> 
                             </td>                             
                           </tr>
                           <tr>
-                              <td class="tg-0lax">
+                              <td class="tg-0lax"style="height: 0;">
                                   <p class="text2-title">Tanggal</p>
                                   <p class="text2-summary"><i>Date</i></p>
                               </td>
                             </td>
                             <td style="width: 2%;" class="tg-0lax">
-                                <p class="text2-title"> : <br></p>
+                                <p class="text2-title notation"> : <br><br><br><br><br><br><br><br><br><br><br></p>
                             </td>
 
-                            <td class="tg-0lax">
+                            <td class="tg-0lax"style="height: 0;">
                                 <p class="text2-title">{{.TanggalTerbit}}</p>
                                 <p class="text2-summary"><i>{{.TanggalTerbitEng}}<i></p>
                             </td>

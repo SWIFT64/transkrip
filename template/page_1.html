@@ -55,10 +55,10 @@
             font-size: 12pt;
         }
         .text-title {
-            font-size: 12pt;
+            font-size: 11pt;
         }
         .text-summary {
-            font-size:10pt;
+            font-size:9pt;
         }
         .place-foto {
             width: 2.79cm;
@@ -72,7 +72,6 @@
         .column-nilai {
             column-count: 2;
             column-gap: 2.5px;
-            margin-top: 2.5px;
         }
         .tabel-nilai {
             width: 100%;
@@ -141,7 +140,7 @@
 
         .tabel-nilai th:nth-child(2),
         .tabel-nilai td:nth-child(2) {
-            width: 40%; /* Sesuaikan lebar kolom Mata Kuliah */
+            width: 45%; /* Sesuaikan lebar kolom Mata Kuliah */
         }
         .tabel-nilai th:nth-child(3),
         .tabel-nilai td:nth-child(3),
@@ -161,7 +160,7 @@
         }
         .grade-summary {
             font-size: 7pt;
-            line-height: 0.1;
+            line-height: 0.8;
             margin-top: 2px;
             margin-bottom: 2px;
             padding-top: 2px;
@@ -177,21 +176,18 @@
         .text-left {
             text-align: left;
         }
-        .footer {
-            display: table-footer-group;
-            margin-bottom: 1px;
-        }
         .tabel_line {
             width: 100%;
             border-top: 1px solid #000; /* You can customize the color and style */
             border-bottom: 1px solid #000; /* You can customize the color and style */
         }
         .footer {
+            display: table-footer-group;
             bottom: 0;
             position: fixed;
-            margin-top: 15px;
-            padding-top: 15px;
-        }
+            margin-top: 50px;
+            margin-bottom: 0px;
+       }
         .student_data {
             margin-top: 2.5%;
         }
@@ -218,7 +214,7 @@
         .page-num {
             text-align: right;
             font-size: 10pt;
-            margin-top: 3cm;
+            margin-top: 2,2cm;
         }
         .headg-title {
             font-size: 10pt;
@@ -239,6 +235,8 @@
             padding-bottom: 0;
             margin-top: 0;
             margin-bottom: 0;
+            line-height: 0;
+            height: 0.1px;
         }
         .div_line {
             width: 100%;
@@ -247,13 +245,33 @@
         .regulator-space {
             margin-top: 10px;
         }
-    </style>
+        .bot-mp {
+            margin-top: 12.5px;
+            padding-top: 0;
+        }
+        .top-mp {
+            margin-bottom: 12.5px;
+            padding-bottom: 0;
+        }
+        .zero-mp {
+            margin-top: 0;
+            padding-top: 0;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .regulator2 {
+            margin-top: 5px;
+        }
+        .bot-m2 {
+            margin-bottom: 1cm;
+        }
+</style>
 </head>
 
 <body>
     <div class="content">
         <div class="header">
-            <p class="header_title"><b>TRANSKRIP AKADEMIK</b></p>
+            <p class="header_title"><b>TRANSKRIP AKADEMIK Q</b></p>
             <p class="header_summary"><i>ACADEMIC TRANSCRIPT</i></p>
             <p class="header_no">No: {{.NoTranskrip}}</p>
         </div>
@@ -268,59 +286,59 @@
                                 <tbody class="student-id-box">
                                     <tr class="small-space">
                                         <td class="tg-0lax2">
-                                            <p class="text-title">Nama</p>
-                                            <p class="text-summary"><i>Name</i></p>
+                                            <p class="text-title top-mp">Nama</p>
+                                            <p class="text-summary bot-mp"><i>Name</i></p>
                                         </td>
                                         <td class="tg-0lax2">
-                                            <p class="text-title"> : {{.NamaMhs}}</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="small-space">
-                                        <td class="tg-0lax2">
-                                            <p class="text-title">NPM</p>
-                                            <p class="text-summary"><i>Student Number</i></p>
-                                        </td>
-                                        <td class="tg-0lax2">
-                                            <p class="text-title"> : {{.NomorIndukMhs}}</p>
+                                            <p class="text-title top-mp"> : {{.NamaMhs}}</p>
                                         </td>
                                     </tr>
                                     <tr class="small-space">
                                         <td class="tg-0lax2">
-                                            <p class="text-title">Tempat, Tgl. Lahir</p>
-                                            <p class="text-summary"><i>Place/date of Birth</i></p>
+                                            <p class="text-title top-mp">NPM</p>
+                                            <p style="line-height: 0;" class="text-summary bot-mp"><i>Student Number</i></p>
                                         </td>
                                         <td class="tg-0lax2">
-                                            <p class="text-title"> : {{.TtlMhs}}</p>
-                                            <p class="text-summary"><i>&nbsp;&nbsp;&nbsp;{{.TtlMhsEng}}<i></p>
-                                        </td>
-                                    </tr>
-                                    <tr class="small-space">
-                                        <td class="tg-0lax2">
-                                            <p class="text-title">Tahun Masuk</p>
-                                            <p class="text-summary"><i>Entry Year</i></p>
-                                        </td>
-                                        <td class="tg-0lax2">
-                                            <p class="text-title"> : {{.TahunMasukMhs}}</p>
+                                            <p style="line-height: 0;" class="text-title top-mp"> : {{.NomorIndukMhs}}</p>
                                         </td>
                                     </tr>
                                     <tr class="small-space">
-                                        <td class="tg-0lax2">
-                                            <p class="text-title">Fakultas</p>
-                                            <p class="text-summary"><i>Faculty</i></p>
+                                        <td class="zero-mp tg-0lax2">
+                                            <p class="text-title top-mp">Tempat, Tgl. Lahir</p>
+                                            <p style="line-height: 0;" class="text-summary bot-mp"><i>Place/date of Birth</i></p>
                                         </td>
-                                        <td class="tg-0lax2">
-                                            <p class="text-title"> : {{.FakultasMhs}}</p>
-                                            <p class="text-summary"><i>&nbsp;&nbsp;&nbsp;{{.FakultasMhsEng}}<i></p>
+                                        <td class="zero-mp tg-0lax2">
+                                            <p class="text-title top-mp"> : {{.TtlMhs}}</p>
+                                            <p style="line-height: 0;"class="text-summary bot-mp"><i>&nbsp;&nbsp;&nbsp;{{.TtlMhsEng}}<i></p>
                                         </td>
                                     </tr>
                                     <tr class="small-space">
-                                        <td class="tg-0lax2">
-                                            <p class="text-title">Program Studi</p>
-                                            <p class="text-summary"><i>Study Program</i></p>
+                                        <td class="zero-mp tg-0lax2">
+                                            <p class="text-title top-mp">Tahun Masuk</p>
+                                            <p style="line-height: 0;" lass="text-summary bot-mp"><i>Entry Year</i></p>
                                         </td>
-                                        <td class="tg-0lax2">
-                                            <p class="text-title"> : {{.ProdiMhs}}</p>
-                                            <p class="text-summary"><i>&nbsp;&nbsp;&nbsp;{{.ProdiMhsEng}}<i></p>
+                                        <td class="zero-mp tg-0lax2">
+                                            <p style="line-height: 0;" class="text-title top-mp"> : {{.TahunMasukMhs}}</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="small-space">
+                                        <td class="zero-mp tg-0lax2">
+                                            <p class="text-title top-mp">Fakultas</p>
+                                            <p class="text-summary bot-mp"><i>Faculty</i></p>
+                                        </td>
+                                        <td class="zero-mp tg-0lax2">
+                                            <p class="text-title top-mp"> : {{.FakultasMhs}}</p>
+                                            <p class="text-summary bot-mp"><i>&nbsp;&nbsp;&nbsp;{{.FakultasMhsEng}}<i></p>
+                                        </td>
+                                    </tr>
+                                    <tr class="small-space">
+                                        <td class="zero-mp tg-0lax2">
+                                            <p class="text-title top-mp ">Program Studi</p>
+                                            <p class="text-summary bot-mp"><i>Study Program</i></p>
+                                        </td>
+                                        <td class="zero-mp tg-0lax2">
+                                            <p class="text-title top-mp"> : {{.ProdiMhs}}</p>
+                                            <p class="text-summary bot-mp"><i>&nbsp;&nbsp;&nbsp;{{.ProdiMhsEng}}<i></p>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -385,18 +403,18 @@
                 </thead>
             </table>
         </div>
-        <div class="column-nilai regulator-space">
+        <div class="column-nilai">
             <table class="tabel-nilai">
-                <tbody>
+                <tbody class="bot-mp2">
                     {{range $index, $subject := .Subjects}}
-                    <tr class="grade-content">
-                        <td><p class="grade-index">{{.Index}}</p></td>
-                        <td>
+                    <tr class="grade-content zero-mp">
+                        <td class="zero-mp"><p class="grade-index">{{.Index}}</p></td>
+                        <td class="zero-mp">
                             <p class="grade-title text-left">{{$subject.Subjname}}</p>
                             <p class="grade-summary text-left"><i>{{$subject.Subjnameeng}}</i></p>
-                        </td>
-                        <td><p class="grade-title">{{$subject.Credits}}</p></td>
-                        <td><p class="grade-title">{{$subject.Grade}}</p></td>
+                        </td class="zero-mp">
+                        <td class="zero-mp"><p class="grade-title">{{$subject.Credits}}</p></td>
+                        <td class="zero-mp"><p class="grade-title">{{$subject.Grade}}</p></td>
                     </tr>
                     {{end}}
                 </tbody>
