@@ -156,23 +156,23 @@
             font-size: 8pt;
             margin-top: 0;
             margin-bottom: 0;
-            padding-top: 5px;
+            padding-top: 0;
             padding-bottom: 0;
         }
         .grade-summary {
             font-size: 7pt;
             line-height: 0.8;
-            margin-top: 2px;
-            margin-bottom: 2px;
-            padding-top: 2px;
-            padding-bottom: 2px;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;
         }
         .grade-index {
             font-size: 8pt;
             margin-top: 0;
             margin-bottom: 0;
             padding-top: 0;
-            padding-bottom: 0;            
+            padding-bottom: 0; 
         }
         .text-left {
             text-align: left;
@@ -282,7 +282,7 @@
 <body>
     <div class="content">
         <div class="header">
-            <p class="header_title"><b>TRANSKRIP AKADEMIK Q</b></p>
+            <p class="header_title"><b>TRANSKRIP AKADEMIK</b></p>
             <p class="header_summary"><i>ACADEMIC TRANSCRIPT</i></p>
             <p class="header_no">No: {{.NoTranskrip}}</p>
         </div>
@@ -301,7 +301,7 @@
                                             <p class="text2-summary bot-mp"><i>Name</i></p>
                                         </td>
                                         <td class="tg-0lax2">
-                                            <p class="text2-title top-mp"> : {{.NamaMhs}}</p>
+                                            <p class="text2-title top-mp"> : {{.NamaMhs}}<br><br></p>
                                         </td>
                                     </tr>
                                     <tr class="small-space">
@@ -310,7 +310,7 @@
                                             <p class="text2-summary bot-mp"><i>Student Number</i></p>
                                         </td>
                                         <td class="tg-0lax2">
-                                            <p class="text2-title top-mp"> : {{.NomorIndukMhs}}</p>
+                                            <p class="text2-title top-mp"> : {{.NomorIndukMhs}}<br><br></p>
                                         </td>
                                     </tr>
                                     <tr class="small-space">
@@ -320,7 +320,7 @@
                                         </td>
                                         <td class="zero-mp tg-0lax2">
                                             <p class="text2-title top-mp"> : {{.TtlMhs}}</p>
-                                            <p class="text2-summary bot-mp"><i>&nbsp;&nbsp;&nbsp;{{.TtlMhsEng}}<i></p>
+                                            <p class="text2-summary bot-mp"><i>&nbsp;&nbsp;&nbsp;{{.TtlMhsEng}}<i><br><br></p>
                                         </td>
                                     </tr>
                                     <tr class="small-space">
@@ -329,7 +329,7 @@
                                             <p class="text2-summary bot-mp"><i>Entry Year</i></p>
                                         </td>
                                         <td class="zero-mp tg-0lax2">
-                                            <p class="text2-title top-mp"> : {{.TahunMasukMhs}}</p>
+                                            <p class="text2-title top-mp"> : {{.TahunMasukMhs}}<br><br><br><br><br><br><br><br></p>
                                         </td>
                                     </tr>
                                     <tr class="small-space">
@@ -339,7 +339,7 @@
                                         </td>
                                         <td class="zero-mp tg-0lax2">
                                             <p class="text2-title top-mp"> : {{.FakultasMhs}}</p>
-                                            <p class="text2-summary bot-mp"><i>&nbsp;&nbsp;&nbsp;{{.FakultasMhsEng}}<i></p>
+                                            <p class="text2-summary bot-mp"><i>&nbsp;&nbsp;&nbsp;{{.FakultasMhsEng}}<i><br><br></p>
                                         </td>
                                     </tr>
                                     <tr class="small-space">
@@ -349,7 +349,7 @@
                                         </td>
                                         <td class="zero-mp tg-0lax2">
                                             <p class="text2-title top-mp"> : {{.ProdiMhs}}</p>
-                                            <p class="text2-summary bot-mp"><i>&nbsp;&nbsp;&nbsp;{{.ProdiMhsEng}}<i></p>
+                                            <p class="text2-summary bot-mp"><i>&nbsp;&nbsp;&nbsp;{{.ProdiMhsEng}}<i><br><br></p>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -392,6 +392,7 @@
                         </th>
                     </tr>
                 </thead>
+                
                 <thead>
                     <tr class="tabel-head tabel_line">
                         <th>
@@ -416,16 +417,34 @@
         </div>
         <div class="column-nilai">
             <table class="tabel-nilai">
-                <tbody class="bot-mp2">
+                <tbody>
                     {{range $index, $subject := .Subjects}}
-                    <tr class="grade-content zero-mp">
-                        <td class="zero-mp"><p class="grade-index">{{.Index}}</p></td>
-                        <td class="zero-mp">
+                    <tr class="grade-content">
+                        <td>
+                            <p class="grade-title"><br>{{$subject.Index}}<br></p>
+                        </td>
+                        <td>
+                            <p class="grade-summary text-left"><br></p>                            
                             <p class="grade-title text-left">{{$subject.Subjname}}</p>
                             <p class="grade-summary text-left"><i>{{$subject.Subjnameeng}}</i></p>
-                        </td class="zero-mp">
-                        <td class="zero-mp"><p class="grade-title">{{$subject.Credits}}</p></td>
-                        <td class="zero-mp"><p class="grade-title">{{$subject.Grade}}</p></td>
+                        </td>
+                        <td><p class="grade-title">{{$subject.Credits}}</p></td>
+                        <td><p class="grade-title">{{$subject.Grade}}</p></td>
+                    </tr>
+                    {{end}}
+                    
+                    {{if eq (mod (len $.Subjects) 2) 1}}
+                    <!-- Handle case when there are odd number of subjects -->
+                    <tr id="ghost-data" class="grade-content">
+                        <td>
+                            <p class="grade-title"><br></p>
+                        </td>
+                        <td>
+                            <p class="grade-title text-left"><br></p>
+                            <p class="grade-summary text-left"><i><br></i></p>
+                        </td>
+                        <td><p class="grade-title"><p><br></p></td>
+                        <td><p class="grade-title"><p><br></p></td>
                     </tr>
                     {{end}}
                 </tbody>

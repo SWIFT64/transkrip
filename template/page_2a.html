@@ -89,8 +89,10 @@
         }
         .tabel-nilai {
             width: 100%;
+            height: 100%;
             border-collapse: collapse;
             border: none;
+            margin-bottom: 15px;
         }
         .tabel-nilai th, .tabel-nilai td {
             text-align: center;
@@ -166,28 +168,36 @@
         }
         .grade-content {
             line-height: 1;
+            padding-bottom: 10px;
         }
         .grade-title {
             font-size: 8pt;
             margin-top: 0;
+            margin-bottom: 1px;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .grade-text {
+            margin-top: 0;
             margin-bottom: 0;
-            padding-top: 5px;
+            padding-top: 0;
             padding-bottom: 0;
         }
         .grade-summary {
             font-size: 7pt;
             line-height: 0.1;
-            margin-top: 2px;
-            margin-bottom: 2px;
-            padding-top: 2px;
-            padding-bottom: 2px;
+            margin-top: 1px;
+            margin-bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;
         }
         .grade-index {
             font-size: 8pt;
             margin-top: 0;
             margin-bottom: 0;
             padding-top: 0;
-            padding-bottom: 0;            
+            padding-bottom: 0;
+            align-items: flex-start;
         }
         .text-left {
             text-align: left;
@@ -273,6 +283,15 @@
         .hm-text {
             font-size: 10px;
         }
+        .no-size {
+            font-size: 0px;
+            height: 0px;
+        }
+        .breaker {
+            display: flex;
+            margin-top: 1px;
+            margin-bottom: 1px;
+        }
 </style>
 </head>
 
@@ -332,23 +351,43 @@
             </table>
         </div>
         <div class="column-nilai">
-            {{range $index, $subject := .Subjects}}
             <table class="tabel-nilai">
                 <tbody>
+                    {{range $index, $subject := .Subjects}}
                     <tr class="grade-content">
                         <td>
-                            <p class="grade-index">{{.Index}}</p>
+                            <p class="grade-title">{{$subject.Index}}<br><br></p>
                         </td>
                         <td>
                             <p class="grade-title text-left">{{$subject.Subjname}}</p>
+                            <p class="grade-summary text-left"><i><br></i></p>
                             <p class="grade-summary text-left"><i>{{$subject.Subjnameeng}}</i></p>
+                            <p class="grade-summary text-left"><i><br></i></p>
+                            <p class="grade-summary text-left"><i><br></i></p>
+                            <p class="grade-summary text-left"><i><br></i></p>
+                            <p class="grade-summary text-left"><i><br></i></p>
                         </td>
                         <td><p class="grade-title">{{$subject.Credits}}</p></td>
                         <td><p class="grade-title">{{$subject.Grade}}</p></td>
                     </tr>
+                    {{end}}
+                    
+                    {{if eq (mod (len $.Subjects) 2) 1}}
+                    <!-- Handle case when there are odd number of subjects -->
+                    <tr id="ghost-data" class="grade-content">
+                        <td>
+                            <p class="grade-index"><br></p>
+                        </td>
+                        <td>
+                            <p class="grade-title text-left"><br></p>
+                            <p class="grade-summary text-left"><i><br></i></p>
+                        </td>
+                        <td><p class="grade-title"><p><br></p></td>
+                        <td><p class="grade-title"><p><br></p></td>
+                    </tr>
+                    {{end}}
                 </tbody>
             </table>
-            {{end}}
         </div>
 
         <div class="div_line"></div>
@@ -363,7 +402,7 @@
                             <p class="text2-summary"><i>Total Credits</i></p>
                         </td>
                         <td style="width: 2%;" class="tg-0lax">
-                            <p class="text2-title"> : <br></p>
+                            <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
                         </td>
                         <td class="tg-0lax">
                           <p class="text2-title">{{.CreditsTotal}}</p>
@@ -376,7 +415,7 @@
                             <p class="text2-summary"><i>Cumulative Grade Point Average</i></p>
                         </td>
                         <td style="width: 2%;" class="tg-0lax">
-                            <p class="text2-title"> : <br></p>
+                            <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
                         </td>
                         <td class="tg-0lax">
                           <p class="text2-title">{{.GradeTotal}}</p>
@@ -389,7 +428,7 @@
                             <p class="text2-summary"><i>Graduation Date</i></p>
                         </td>
                         <td style="width: 2%;" class="tg-0lax">
-                            <p class="text2-title"> : <br></p>
+                            <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
                         </td>
                         <td class="tg-0lax">
                           <p class="text2-title">{{.GraduationDate}}</p>
@@ -402,7 +441,7 @@
                             <p class="text2-summary"><i>Predicate</i></p>
                         </td>
                         <td style="width: 2%;" class="tg-0lax">
-                            <p class="text2-title"> : <br></p>
+                            <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
                         </td>
                         <td class="tg-0lax">
                           <p class="text2-title">{{.PredikatMhs}}</p>
@@ -414,7 +453,7 @@
                           <p class="text2-title">Judul Skripsi/Tugas Akhir</p>
                       </td>
                       <td style="width: 2%;" class="tg-0lax">
-                        <p class="text2-title"> : <br></p>
+                        <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
                     </td>
                       <td style="line-height: 1;" class="tg-0lax">
                           <p class="text2-title">{{.JudulSkriptsi.JudulIndonesia}}</p>
@@ -425,7 +464,7 @@
                           <p class="text2-title">Tittle of Thesis/Final Assignment</p>
                       </td>
                       <td style="width: 2%;" class="tg-0lax">
-                        <p class="text2-title"> : <br></p>
+                        <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
                     </td>
                     <td class="tg-0lax">
                           <p class="text2-title">{{.JudulSkriptsi.JudulInggris}}</p>
@@ -450,7 +489,7 @@
                                   <p class="text2-summary"><i>Issued in</i></p>
                               </td>
                               <td style="width: 2%;" class="tg-0lax">
-                                <p class="text2-title"> : <br></p>
+                                <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
                             </td>
                             <td class="tg-0lax">
                                 <p class="text2-title">{{.TempatTerbit}}</p>
@@ -465,7 +504,7 @@
                               </td>
                             </td>
                             <td style="width: 2%;" class="tg-0lax">
-                                <p class="text2-title"> : <br></p>
+                                <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
                             </td>
 
                             <td class="tg-0lax">

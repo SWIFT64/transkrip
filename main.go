@@ -96,6 +96,11 @@ type JudulSkriptsi struct {
 	JudulInggris   string `json:"judul_inggris"`
 }
 
+// Add a helper function for modulus operation
+func mod(a, b int) int {
+	return a % b
+}
+
 func main() {
 	// Read configuration from file
 	config, err := readConfig("config.json")
@@ -184,10 +189,10 @@ func main() {
 		NikDekan:          student.NikDekan,
 	}
 
-	switch len(student.Subjects) > 40 {
+	switch len(student.Subjects) > 46 {
 	case true:
-		pdfPageOne.Subjects = student.Subjects[:40]
-		pdfPageTwo.Subjects = student.Subjects[40:]
+		pdfPageOne.Subjects = student.Subjects[:46]
+		pdfPageTwo.Subjects = student.Subjects[46:]
 	case false:
 		pdfPageOne.Subjects = student.Subjects
 	}
@@ -195,7 +200,7 @@ func main() {
 	// Read the HTML template from the file
 	var templateFile1, templateFile2 string
 
-	switch len(student.Subjects) > 40 {
+	switch len(student.Subjects) > 46 {
 	case true:
 		templateFile1 = "template/page_1.html"
 		templateFile2 = "template/page_2a.html"
@@ -215,12 +220,12 @@ func main() {
 	}
 
 	// Parse the HTML template
-	tmpl1, err := template.New("page_1").Parse(string(htmlTemplate1))
+	tmpl1, err := template.New("page_1").Funcs(template.FuncMap{"mod": mod}).Parse(string(htmlTemplate1))
 	if err != nil {
 		panic(err)
 	}
 	// Parse the HTML template
-	tmpl2, err := template.New("page_2").Parse(string(htmlTemplate2))
+	tmpl2, err := template.New("page_2").Funcs(template.FuncMap{"mod": mod}).Parse(string(htmlTemplate2))
 	if err != nil {
 		panic(err)
 	}
