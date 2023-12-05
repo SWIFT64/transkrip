@@ -170,9 +170,10 @@
         .grade-index {
             font-size: 8pt;
             margin-top: 0;
-            margin-bottom: 0;
+            margin-bottom: 10;
             padding-top: 0;
             padding-bottom: 0; 
+            top: 0;
         }
         .text-left {
             text-align: left;
@@ -310,7 +311,7 @@
                                             <p class="text2-summary bot-mp"><i>Student Number</i></p>
                                         </td>
                                         <td class="tg-0lax2">
-                                            <p class="text2-title top-mp"> : {{.NomorIndukMhs}}<br><br></p>
+                                            <p class="text2-title top-mp"> : {{.NomorIndukMhs}}<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
                                         </td>
                                     </tr>
                                     <tr class="small-space">
@@ -392,7 +393,9 @@
                         </th>
                     </tr>
                 </thead>
-                
+            </table>
+            
+            <table class="tabel-nilai">
                 <thead>
                     <tr class="tabel-head tabel_line">
                         <th>
@@ -417,16 +420,17 @@
         </div>
         <div class="column-nilai">
             <table class="tabel-nilai">
-                <tbody>
+                <tbody>                            <p class="grade-summary text-left"><br></p>                            
+
                     {{range $index, $subject := .Subjects}}
                     <tr class="grade-content">
                         <td>
-                            <p class="grade-title"><br>{{$subject.Index}}<br></p>
+                            <p class="grade-index">{{$subject.Index}}</p>
                         </td>
                         <td>
-                            <p class="grade-summary text-left"><br></p>                            
                             <p class="grade-title text-left">{{$subject.Subjname}}</p>
                             <p class="grade-summary text-left"><i>{{$subject.Subjnameeng}}</i></p>
+                            <p class="grade-summary text-left"><br></p>                            
                         </td>
                         <td><p class="grade-title">{{$subject.Credits}}</p></td>
                         <td><p class="grade-title">{{$subject.Grade}}</p></td>

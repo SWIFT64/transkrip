@@ -189,10 +189,10 @@ func main() {
 		NikDekan:          student.NikDekan,
 	}
 
-	switch len(student.Subjects) > 46 {
+	switch len(student.Subjects) > 48 {
 	case true:
-		pdfPageOne.Subjects = student.Subjects[:46]
-		pdfPageTwo.Subjects = student.Subjects[46:]
+		pdfPageOne.Subjects = student.Subjects[:48]
+		pdfPageTwo.Subjects = student.Subjects[48:]
 	case false:
 		pdfPageOne.Subjects = student.Subjects
 	}
