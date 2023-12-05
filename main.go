@@ -200,7 +200,7 @@ func main() {
 	// Read the HTML template from the file
 	var templateFile1, templateFile2 string
 
-	switch len(student.Subjects) > 46 {
+	switch len(student.Subjects) > 48 {
 	case true:
 		templateFile1 = "template/page_1.html"
 		templateFile2 = "template/page_2a.html"

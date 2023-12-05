@@ -40,8 +40,6 @@
             margin-bottom: 0;
             padding-top: 0;
             padding-bottom: 0;
-        }
-        .tg-0lax{
             vertical-align: top;
         }
         .header {
@@ -176,20 +174,14 @@
         .grade-title {
             font-size: 8pt;
             margin-top: 0;
-            margin-bottom: 1px;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-        .grade-text {
-            margin-top: 0;
             margin-bottom: 0;
             padding-top: 0;
             padding-bottom: 0;
         }
         .grade-summary {
             font-size: 7pt;
-            line-height: 0.1;
-            margin-top: 1px;
+            line-height: 0.8;
+            margin-top: 0;
             margin-bottom: 0;
             padding-top: 0;
             padding-bottom: 0;
@@ -197,10 +189,18 @@
         .grade-index {
             font-size: 8pt;
             margin-top: 0;
-            margin-bottom: 0;
+            margin-bottom: 10;
             padding-top: 0;
-            padding-bottom: 0;
-            align-items: flex-start;
+            padding-bottom: 0; 
+            top: 0;
+        }
+        .grade-details {
+            font-size: 8pt;
+            margin-top: 0;
+            margin-bottom: 10;
+            padding-top: 0;
+            padding-bottom: 0; 
+            top: 0;
         }
         .text-left {
             text-align: left;
@@ -295,6 +295,9 @@
             margin-top: 1px;
             margin-bottom: 1px;
         }
+        .tg-0lax{
+            vertical-align: top;
+        }
 </style>
 </head>
 
@@ -311,7 +314,6 @@
         </div>
 
         <div class="div_line"></div>
-
         <div class="student_data">
             <b2>
             <table class="tg">
@@ -322,7 +324,8 @@
                             <p class="text2-summary"><i>Total Credits</i></p>
                         </td>
                         <td style="width: 2%;" class="tg-0lax">
-                            <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+                            <p class="text2-title"> : </p>
+                            <p class="text2-title"> </p>
                         </td>
                         <td class="tg-0lax">
                           <p class="text2-title">{{.CreditsTotal}}</p>
@@ -335,7 +338,8 @@
                             <p class="text2-summary"><i>Cumulative Grade Point Average</i></p>
                         </td>
                         <td style="width: 2%;" class="tg-0lax">
-                            <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+                            <p class="text2-title"> : </p>
+                            <p class="text2-title"> </p>
                         </td>
                         <td class="tg-0lax">
                           <p class="text2-title">{{.GradeTotal}}</p>
@@ -348,7 +352,8 @@
                             <p class="text2-summary"><i>Graduation Date</i></p>
                         </td>
                         <td style="width: 2%;" class="tg-0lax">
-                            <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+                            <p class="text2-title"> : </p>
+                            <p class="text2-title"> </p>
                         </td>
                         <td class="tg-0lax">
                           <p class="text2-title">{{.GraduationDate}}</p>
@@ -361,41 +366,44 @@
                             <p class="text2-summary"><i>Predicate</i></p>
                         </td>
                         <td style="width: 2%;" class="tg-0lax">
-                            <p class="
-                            "> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+                            <p class="text2-title"> : </p>
+                            <p class="text2-title"> </p>
                         </td>
                         <td class="tg-0lax">
                           <p class="text2-title">{{.PredikatMhs}}</p>
                           <p class="text2-summary"><i>{{.PredikatMhsEng}}<i></p>
                         </td> 
                     </tr>
-                    <tr>
+                    <tr style="line-height: 1;" >
                       <td style="width: 25%;" style="line-height: 1;" class="tg-0lax">
                           <p class="text2-title">Judul Skripsi/Tugas Akhir</p>
-                          <p class="text2-title"> <i></i></p>
+                          <p class="text2-title"> </p>
                       </td>
                       <td style="width: 2%;" class="tg-0lax">
                         <p class="text2-title"> : </p>
                     </td>
-                      <td style="line-height: 1;" class="tg-0lax">
-                          <!-- p class="text2-title">{{.JudulSkriptsi.JudulIndonesia}}</p>-->
-                          <p class="text2-title">AAAHBXVBDBHJDFBXCFHJKDXBHJBHJKFBHJXVBGHJXVGXVGHVGHVHJFBHJBHJBHJSDGHJSVXGHJVGHJDVBGHJBHVSGHJVGHDVMFVVDHVDGH</p>
+                      <td class="tg-0lax">
+                          <p class="text2-title">{{.JudulSkriptsi.JudulIndonesia}}</span>
+                          <p class="text2-title"> </p>
                       </td>
                   </tr>
-                  <tr style="width: 25%;" style="line-height: 1;">
+                  <tr style="line-height: 1;">
                       <td class="tg-0lax">
                           <p class="text2-title">Tittle of Thesis/Final Assignment</p>
+                          <p class="text2-title"> </p>
                       </td>
                       <td style="width: 2%;" class="tg-0lax">
                         <p class="text2-title"> : </p>
+                        <p class="text2-title"> </p>
                     </td>
                     <td class="tg-0lax">
-                          <p class="text2-title">{{.JudulSkriptsi.JudulInggris}}</p>
+                          <p class="text2-title"><i>{{.JudulSkriptsi.JudulInggris}}</i></p>
+                          <p class="text2-title"> </p>
                       </td>
                   </tr>
                 </tbody>
-            </table>
-        </div>
+              </table>
+          </div>
 
         <div class="div_line"></div>
         <div class="student_data">
@@ -412,8 +420,10 @@
                                   <p class="text2-summary"><i>Issued in</i></p>
                               </td>
                               <td style="width: 2%;" class="tg-0lax">
-                                <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+                                <p class="text2-title"> </p>
+                                <p class="text2-title"> </p>
                             </td>
+
                             <td class="tg-0lax">
                                 <p class="text2-title">{{.TempatTerbit}}</p>
                                 <p class="text2-summary"><i>{{.TempatTerbit}}<i></p>
@@ -427,7 +437,8 @@
                               </td>
                             </td>
                             <td style="width: 2%;" class="tg-0lax">
-                                <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+                                <p class="text2-title"> : </p>
+                                <p class="text2-title"> </p>
                             </td>
 
                             <td class="tg-0lax">
@@ -505,13 +516,12 @@
                             <div class="ttd-placeholder">
                                 <div class="dekan">
                                     <p>Dekan</p>
-                                    <p><i>Dean</i></p>
+                                    <p style="font-size: 10pt;"><i>Dean</i></p>
                                 </div>
                                 <div class="ttd-p2">
                                     <div class="dekan">
                                         <p>{{.FakultasMhs}}</p>
-                                        <!-- Kecilin -->
-                                        <p><i>{{.FakultasMhsEng}}</i></p>
+                                        <p style="font-size: 10pt;"><i>{{.FakultasMhsEng}}</i></p>
                                     </div>
                                 <div class="ttd-p2">
                                 </div>

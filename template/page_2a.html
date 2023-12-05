@@ -40,6 +40,7 @@
             margin-bottom: 0;
             padding-top: 0;
             padding-bottom: 0;
+            vertical-align: top;
         }
         .header {
             line-height: 0.25;
@@ -173,20 +174,14 @@
         .grade-title {
             font-size: 8pt;
             margin-top: 0;
-            margin-bottom: 1px;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-        .grade-text {
-            margin-top: 0;
             margin-bottom: 0;
             padding-top: 0;
             padding-bottom: 0;
         }
         .grade-summary {
             font-size: 7pt;
-            line-height: 0.1;
-            margin-top: 1px;
+            line-height: 0.8;
+            margin-top: 0;
             margin-bottom: 0;
             padding-top: 0;
             padding-bottom: 0;
@@ -194,10 +189,18 @@
         .grade-index {
             font-size: 8pt;
             margin-top: 0;
-            margin-bottom: 0;
+            margin-bottom: 10;
             padding-top: 0;
-            padding-bottom: 0;
-            align-items: flex-start;
+            padding-bottom: 0; 
+            top: 0;
+        }
+        .grade-details {
+            font-size: 8pt;
+            margin-top: 0;
+            margin-bottom: 10;
+            padding-top: 0;
+            padding-bottom: 0; 
+            top: 0;
         }
         .text-left {
             text-align: left;
@@ -360,35 +363,52 @@
                 <tbody>
                     {{range $index, $subject := .Subjects}}
                     <tr class="grade-content">
-                        <td>
-                            <p class="grade-title">{{$subject.Index}}<br><br></p>
+                        <td class="nilai-align">
+                            <p class="grade-index">{{$subject.Index}}</p>
+                            <p class="grade-index"> </p>
+                            <p class="grade-index"> </p>
                         </td>
                         <td>
                             <p class="grade-title text-left">{{$subject.Subjname}}</p>
-                            <p class="grade-summary text-left"><i><br></i></p>
                             <p class="grade-summary text-left"><i>{{$subject.Subjnameeng}}</i></p>
-                            <p class="grade-summary text-left"><i><br></i></p>
-                            <p class="grade-summary text-left"><i><br></i></p>
-                            <p class="grade-summary text-left"><i><br></i></p>
-                            <p class="grade-summary text-left"><i><br></i></p>
+                            <p class="grade-summary text-left"> </p>                            
                         </td>
-                        <td><p class="grade-title">{{$subject.Credits}}</p></td>
-                        <td><p class="grade-title">{{$subject.Grade}}</p></td>
+                        <td>
+                            <p class="grade-details">{{$subject.Credits}}</p>
+                            <p class="grade-details"> </p>
+                            <p class="grade-details"> </p>
+                        </td>
+                        <td>
+                            <p class="grade-details">{{$subject.Grade}}</p>
+                            <p class="grade-details"> </p>
+                            <p class="grade-details"> </p>
+                        </td>
                     </tr>
                     {{end}}
                     
                     {{if eq (mod (len $.Subjects) 2) 1}}
                     <!-- Handle case when there are odd number of subjects -->
                     <tr id="ghost-data" class="grade-content">
-                        <td>
-                            <p class="grade-index"><br></p>
+                        <td class="nilai-align">
+                            <p class="grade-index"> </p>
+                            <p class="grade-index"> </p>
+                            <p class="grade-index"> </p>
                         </td>
                         <td>
-                            <p class="grade-title text-left"><br></p>
-                            <p class="grade-summary text-left"><i><br></i></p>
+                            <p class="grade-title text-left"> </p>
+                            <p class="grade-summary text-left"><i> </i></p>
+                            <p class="grade-summary text-left"> </p>                            
                         </td>
-                        <td><p class="grade-title"><p><br></p></td>
-                        <td><p class="grade-title"><p><br></p></td>
+                        <td>
+                            <p class="grade-details"> </p>
+                            <p class="grade-details"> </p>
+                            <p class="grade-details"> </p>
+                        </td>
+                        <td>
+                            <p class="grade-details"> </p>
+                            <p class="grade-details"> </p>
+                            <p class="grade-details"> </p>
+                        </td>
                     </tr>
                     {{end}}
                 </tbody>
@@ -407,7 +427,8 @@
                             <p class="text2-summary"><i>Total Credits</i></p>
                         </td>
                         <td style="width: 2%;" class="tg-0lax">
-                            <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+                            <p class="text2-title"> : </p>
+                            <p class="text2-title"> </p>
                         </td>
                         <td class="tg-0lax">
                           <p class="text2-title">{{.CreditsTotal}}</p>
@@ -420,7 +441,8 @@
                             <p class="text2-summary"><i>Cumulative Grade Point Average</i></p>
                         </td>
                         <td style="width: 2%;" class="tg-0lax">
-                            <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+                            <p class="text2-title"> : </p>
+                            <p class="text2-title"> </p>
                         </td>
                         <td class="tg-0lax">
                           <p class="text2-title">{{.GradeTotal}}</p>
@@ -433,7 +455,8 @@
                             <p class="text2-summary"><i>Graduation Date</i></p>
                         </td>
                         <td style="width: 2%;" class="tg-0lax">
-                            <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+                            <p class="text2-title"> : </p>
+                            <p class="text2-title"> </p>
                         </td>
                         <td class="tg-0lax">
                           <p class="text2-title">{{.GraduationDate}}</p>
@@ -447,6 +470,7 @@
                         </td>
                         <td style="width: 2%;" class="tg-0lax">
                             <p class="text2-title"> : </p>
+                            <p class="text2-title"> </p>
                         </td>
                         <td class="tg-0lax">
                           <p class="text2-title">{{.PredikatMhs}}</p>
@@ -456,23 +480,29 @@
                     <tr>
                       <td style="width: 25%;" style="line-height: 1;" class="tg-0lax">
                           <p class="text2-title">Judul Skripsi/Tugas Akhir</p>
+                          <p class="text2-title"> </p>
                       </td>
                       <td style="width: 2%;" class="tg-0lax">
                         <p class="text2-title"> : </p>
+                        <p class="text2-title"> </p>
                     </td>
                       <td style="line-height: 1;" class="tg-0lax">
                           <span class="text2-title">{{.JudulSkriptsi.JudulIndonesia}}</span>
+                          <p class="text2-title"> </p>
                       </td>
                   </tr>
                   <tr style="width: 25%;" style="line-height: 1;">
                       <td class="tg-0lax">
                           <p class="text2-title">Tittle of Thesis/Final Assignment</p>
+                          <p class="text2-title"> </p>
                       </td>
                       <td style="width: 2%;" class="tg-0lax">
                         <p class="text2-title"> : </p>
+                        <p class="text2-title"> </p>
                     </td>
                     <td class="tg-0lax">
-                          <p class="text2-title">{{.JudulSkriptsi.JudulInggris}}</p>
+                          <p class="text2-title"><i>{{.JudulSkriptsi.JudulInggris}}</i></p>
+                          <p class="text2-title"> </p>
                       </td>
                   </tr>
                 </tbody>
@@ -494,8 +524,10 @@
                                   <p class="text2-summary"><i>Issued in</i></p>
                               </td>
                               <td style="width: 2%;" class="tg-0lax">
-                                <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+                                <p class="text2-title"> </p>
+                                <p class="text2-title"> </p>
                             </td>
+
                             <td class="tg-0lax">
                                 <p class="text2-title">{{.TempatTerbit}}</p>
                                 <p class="text2-summary"><i>{{.TempatTerbit}}<i></p>
@@ -509,7 +541,8 @@
                               </td>
                             </td>
                             <td style="width: 2%;" class="tg-0lax">
-                                <p class="text2-title"> : <br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+                                <p class="text2-title"> : </p>
+                                <p class="text2-title"> </p>
                             </td>
 
                             <td class="tg-0lax">
@@ -587,12 +620,12 @@
                             <div class="ttd-placeholder">
                                 <div class="dekan">
                                     <p>Dekan</p>
-                                    <p><i>Dean</i></p>
+                                    <p style="font-size: 10pt;"><i>Dean</i></p>
                                 </div>
                                 <div class="ttd-p2">
                                     <div class="dekan">
                                         <p>{{.FakultasMhs}}</p>
-                                        <p><i>{{.FakultasMhsEng}}</i></p>
+                                        <p style="font-size: 10pt;"><i>{{.FakultasMhsEng}}</i></p>
                                     </div>
                                 <div class="ttd-p2">
                                 </div>

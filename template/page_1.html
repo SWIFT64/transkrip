@@ -285,6 +285,9 @@
             margin-bottom: 10px;
             padding-bottom: 2px;
         }
+        .nilai-align {
+            vertical-align: top;
+        }
 
 </style>
 </head>
@@ -312,6 +315,7 @@
                                         </td>
                                         <td class="tg-0lax2">
                                             <p class="text2-title top-mp"> : {{.NamaMhs}}</p>
+                                            <p class="text2-title top-mp"> </p>
                                         </td>
                                     </tr>
                                     <tr class="small-space">
@@ -321,6 +325,7 @@
                                         </td>
                                         <td class="tg-0lax2">
                                             <p class="text2-title top-mp"> : {{.NomorIndukMhs}}</p>
+                                            <p class="text2-title top-mp"> </p>
                                         </td>
                                     </tr>
                                     <tr class="small-space">
@@ -340,6 +345,7 @@
                                         </td>
                                         <td class="zero-mp tg-0lax2">
                                             <p class="text2-title top-mp"> : {{.TahunMasukMhs}}</p>
+                                            <p class="text2-title top-mp"> </p>
                                         </td>                                    </tr>
                                     <tr class="small-space">
                                         <td class="zero-mp tg-0lax2">
@@ -358,7 +364,7 @@
                                         </td>
                                         <td class="zero-mp tg-0lax2">
                                             <p class="text2-title top-mp"> : {{.ProdiMhs}}</p>
-                                            <p class="text2-summary bot-mp"><i>&nbsp;&nbsp;&nbsp;{{.ProdiMhsEng}}<i></p>
+                                            <p class="text2-summary bot-mp"><i>&nbsp;&nbsp;&nbsp;{{.ProdiMhsEng}}<i><br><br></p>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -428,35 +434,55 @@
         </div>
         <div class="column-nilai">
             <table class="tabel-nilai">
-                <tbody>                            <p class="grade-summary text-left"><br></p>                            
-
+                <tbody>                            
                     {{range $index, $subject := .Subjects}}
                     <tr class="grade-content">
-                        <td>
-                            <p class="grade-index">{{$subject.Index}}<br></p>
+                        <td class="nilai-align">
+                            <p class="grade-index">{{$subject.Index}}</p>
+                            <p class="grade-index"> </p>
+                            <p class="grade-index"> </p>
                         </td>
                         <td>
                             <p class="grade-title text-left">{{$subject.Subjname}}</p>
                             <p class="grade-summary text-left"><i>{{$subject.Subjnameeng}}</i></p>
-                            <p class="grade-summary text-left"><br></p>                            
+                            <p class="grade-summary text-left"> </p>                            
                         </td>
-                        <td><p class="grade-details">{{$subject.Credits}}<br></p></td>
-                        <td><p class="grade-details">{{$subject.Grade}}<br></p></td>
+                        <td>
+                            <p class="grade-details">{{$subject.Credits}}</p>
+                            <p class="grade-details"> </p>
+                            <p class="grade-details"> </p>
+                        </td>
+                        <td>
+                            <p class="grade-details">{{$subject.Grade}}</p>
+                            <p class="grade-details"> </p>
+                            <p class="grade-details"> </p>
+                        </td>
                     </tr>
                     {{end}}
                     
                     {{if eq (mod (len $.Subjects) 2) 1}}
                     <!-- Handle case when there are odd number of subjects -->
                     <tr id="ghost-data" class="grade-content">
-                        <td>
-                            <p class="grade-title"><br></p>
+                        <td class="nilai-align">
+                            <p class="grade-index"> </p>
+                            <p class="grade-index"> </p>
+                            <p class="grade-index"> </p>
                         </td>
                         <td>
-                            <p class="grade-title text-left"><br></p>
-                            <p class="grade-summary text-left"><i><br></i></p>
+                            <p class="grade-title text-left"> </p>
+                            <p class="grade-summary text-left"><i> </i></p>
+                            <p class="grade-summary text-left"> </p>                            
                         </td>
-                        <td><p class="grade-title"><p><br></p></td>
-                        <td><p class="grade-title"><p><br></p></td>
+                        <td>
+                            <p class="grade-details"> </p>
+                            <p class="grade-details"> </p>
+                            <p class="grade-details"> </p>
+                        </td>
+                        <td>
+                            <p class="grade-details"> </p>
+                            <p class="grade-details"> </p>
+                            <p class="grade-details"> </p>
+                        </td>
                     </tr>
                     {{end}}
                 </tbody>
