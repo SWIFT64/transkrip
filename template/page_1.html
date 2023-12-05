@@ -175,6 +175,14 @@
             padding-bottom: 0; 
             top: 0;
         }
+        .grade-details {
+            font-size: 8pt;
+            margin-top: 0;
+            margin-bottom: 10;
+            padding-top: 0;
+            padding-bottom: 0; 
+            top: 0;
+        }
         .text-left {
             text-align: left;
         }
@@ -425,15 +433,15 @@
                     {{range $index, $subject := .Subjects}}
                     <tr class="grade-content">
                         <td>
-                            <p class="grade-index">{{$subject.Index}}</p>
+                            <p class="grade-index">{{$subject.Index}}<br></p>
                         </td>
                         <td>
                             <p class="grade-title text-left">{{$subject.Subjname}}</p>
                             <p class="grade-summary text-left"><i>{{$subject.Subjnameeng}}</i></p>
                             <p class="grade-summary text-left"><br></p>                            
                         </td>
-                        <td><p class="grade-title">{{$subject.Credits}}</p></td>
-                        <td><p class="grade-title">{{$subject.Grade}}</p></td>
+                        <td><p class="grade-details">{{$subject.Credits}}<br></p></td>
+                        <td><p class="grade-details">{{$subject.Grade}}<br></p></td>
                     </tr>
                     {{end}}
                     
