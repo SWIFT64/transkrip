@@ -8,7 +8,7 @@
     <style>
         @page {
             size: A4;
-            margin-top: 1.75cm;
+            margin-top: 2cm;
             margin-bottom: 0cm;
         }
         .content {
@@ -144,7 +144,7 @@
         }
 
         .ttd-p2 {
-            height: 47px;
+            height: 80px;
         }
         .student-id-box {
             line-height: 0.1;
@@ -257,11 +257,23 @@
             margin-top: 2px;
             margin-bottom: 2px;
         }
-                .gb-title {
-            font-size: 6pt;
+        .gb-title {
+            font-size: 10pt;
+            margin-top: 10;
+            margin-bottom: 5px;
+            padding-top: 0;
+            padding-bottom: 0; 
+            top: 0;
+            font-weight: 100;
         }
         .gb-summary {
-            font-size: 5pt;
+            font-size: 8pt;
+            margin-top: 0;
+            margin-bottom: 10;
+            padding-top: 0;
+            padding-bottom: 0; 
+            top: 0;
+            font-weight: 100;
         }
         .dekan p {
             margin-top: 0;
@@ -297,6 +309,12 @@
         }
         .tg-0lax{
             vertical-align: top;
+        }
+        .nilai-align {
+            vertical-align: top;
+        }
+        .transparent-text {
+            color: transparent;
         }
 </style>
 </head>
@@ -362,26 +380,26 @@
             <table class="tabel-nilai">
                 <tbody>
                     {{range $index, $subject := .Subjects}}
-                    <tr class="grade-content">
+                    <tr class="grade-content nilai-align">
                         <td class="nilai-align">
-                            <p class="grade-index">{{$subject.Index}}</p>
-                            <p class="grade-index"> </p>
-                            <p class="grade-index"> </p>
+                            <p class="grade-title nilai-align"> </p>
+                            <p class="grade-title nilai-align">{{$subject.Index}}</p>
+                            <p class="grade-title nilai-align"> </p>
                         </td>
                         <td>
-                            <p class="grade-title text-left">{{$subject.Subjname}}</p>
-                            <p class="grade-summary text-left"><i>{{$subject.Subjnameeng}}</i></p>
-                            <p class="grade-summary text-left"> </p>                            
+                            <p class="grade-title text-left nilai-align">{{$subject.Subjname}} <br>
+                            <span class="grade-summary text-left nilai-align"><i>{{$subject.Subjnameeng}}</i></span>
+                            </p>                            
                         </td>
                         <td>
-                            <p class="grade-details">{{$subject.Credits}}</p>
-                            <p class="grade-details"> </p>
-                            <p class="grade-details"> </p>
+                            <p class="grade-details nilai-align">{{$subject.Credits}}</p>
+                            <p class="grade-details nilai-align"> </p>
+                            <p class="grade-details nilai-align"> </p>
                         </td>
                         <td>
-                            <p class="grade-details">{{$subject.Grade}}</p>
-                            <p class="grade-details"> </p>
-                            <p class="grade-details"> </p>
+                            <p class="grade-details nilai-align">{{$subject.Grade}}</p>
+                            <p class="grade-details nilai-align"> </p>
+                            <p class="grade-details nilai-align"> </p>
                         </td>
                     </tr>
                     {{end}}
@@ -437,6 +455,17 @@
                     </tr>
                     <tr>
                         <td style="width: 25%;" class="tg-0lax">
+                            <p class="text2-title"></p>
+                        </td>
+                        <td style="width: 2%;" class="tg-0lax">
+                            <p class="text2-title"> </p>
+                        </td>
+                        <td class="tg-0lax">
+                          <p class="text2-title"> </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%;" class="tg-0lax">
                             <p class="text2-title">Indeks Prestasi Kumulatif (IPK)</p>
                             <p class="text2-summary"><i>Cumulative Grade Point Average</i></p>
                         </td>
@@ -447,6 +476,17 @@
                         <td class="tg-0lax">
                           <p class="text2-title">{{.GradeTotal}}</p>
                           <p class="text2-summary"><i>{{.GradeTotal}}<i></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%;" class="tg-0lax">
+                            <p class="text2-title"></p>
+                        </td>
+                        <td style="width: 2%;" class="tg-0lax">
+                            <p class="text2-title"> </p>
+                        </td>
+                        <td class="tg-0lax">
+                          <p class="text2-title"> </p>
                         </td>
                     </tr>
                     <tr>
@@ -463,7 +503,18 @@
                           <p class="text2-summary"><i>{{.GraduationDateEng}}<i></p>
                         </td>
                       </tr>
-                    <tr>
+                      <tr>
+                        <td style="width: 25%;" class="tg-0lax">
+                            <p class="text2-title"></p>
+                        </td>
+                        <td style="width: 2%;" class="tg-0lax">
+                            <p class="text2-title"> </p>
+                        </td>
+                        <td class="tg-0lax">
+                          <p class="text2-title"> </p>
+                        </td>
+                    </tr>
+                      <tr>
                         <td style="width: 25%;" class="tg-0lax">
                             <p class="text2-title">Predikat</p>
                             <p class="text2-summary"><i>Predicate</i></p>
@@ -476,6 +527,17 @@
                           <p class="text2-title">{{.PredikatMhs}}</p>
                           <p class="text2-summary"><i>{{.PredikatMhsEng}}<i></p>
                         </td> 
+                        <tr>
+                            <td style="width: 25%;" class="tg-0lax">
+                                <p class="text2-title"></p>
+                            </td>
+                            <td style="width: 2%;" class="tg-0lax">
+                                <p class="text2-title"> </p>
+                            </td>
+                            <td class="tg-0lax">
+                              <p class="text2-title"> </p>
+                            </td>
+                        </tr>
                     </tr>
                     <tr style="line-height: 1;" >
                       <td style="width: 25%;" style="line-height: 1;" class="tg-0lax">
@@ -516,40 +578,51 @@
   
                   <td class="tg-0lax">
                     <table class="tg">
-                      <tbody>
-                          <tr>
+                        <tbody>
+                            <tr>
+                                <td class="tg-0lax">
+                                    <p class="text2-title">Diterbitkan di</p>
+                                    <p class="text2-summary"><i>Issued in</i></p>
+                                </td>
+                                <td style="width: 2%;" class="tg-0lax">
+                                  <p class="transparent-text text2-title"> : </p>
+                                  <p class="text2-title"> </p>
+                              </td>
+                            
                               <td class="tg-0lax">
-                                  <p class="text2-title">Diterbitkan di</p>
-                                  <p class="text2-summary"><i>Issued in</i></p>
+                                  <p class="text2-title">{{.TempatTerbit}}</p>
+                                  <p class="text2-summary"><i>{{.TempatTerbit}}<i></p>
+                                 </td> 
+                              </td>                             
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;" class="tg-0lax">
+                                    <p class="text2-title"></p>
+                                </td>
+                                <td style="width: 2%;" class="tg-0lax">
+                                    <p class="text2-title"> </p>
+                                </td>
+                                <td class="tg-0lax">
+                                  <p class="text2-title"> </p>
+                                </td>
+                            </tr>
+                            <tr style="margin-top: 100px;">
+                                <td class="tg-0lax">
+                                    <p class="text2-title">Tanggal</p>
+                                    <p class="text2-summary"><i>Date</i></p>
+                                </td>
                               </td>
                               <td style="width: 2%;" class="tg-0lax">
+                                <p class="transparent-text text2-title"> : </p>
                                 <p class="text2-title"> </p>
-                                <p class="text2-title"> </p>
-                            </td>
-
-                            <td class="tg-0lax">
-                                <p class="text2-title">{{.TempatTerbit}}</p>
-                                <p class="text2-summary"><i>{{.TempatTerbit}}<i></p>
-                               </td> 
-                            </td>                             
-                          </tr>
-                          <tr>
-                              <td class="tg-0lax">
-                                  <p class="text2-title">Tanggal</p>
-                                  <p class="text2-summary"><i>Date</i></p>
                               </td>
-                            </td>
-                            <td style="width: 2%;" class="tg-0lax">
-                                <p class="text2-title"> : </p>
-                                <p class="text2-title"> </p>
-                            </td>
-
-                            <td class="tg-0lax">
-                                <p class="text2-title">{{.TanggalTerbit}}</p>
-                                <p class="text2-summary"><i>{{.TanggalTerbitEng}}<i></p>
-                            </td>
-                          </tr>
-                      </tbody>
+                            
+                              <td class="tg-0lax">
+                                  <p class="text2-title">{{.TanggalTerbit}}</p>
+                                  <p class="text2-summary"><i>{{.TanggalTerbitEng}}<i></p>
+                              </td>
+                            </tr>
+                        </tbody>
                   </table>
                   </td>          
                 </tr>
@@ -568,7 +641,7 @@
                                     <tr class="tabel-head tabel_line">
                                         <th>
                                             <p class="gb-title"> HURUF MUTU </p>
-                                            <p class="gb-summary"><i>Grade Letter</i></p>
+                                            <p class="gb-summary"><i>Letter Grade</i></p>
                                         </th>
                                         <th>
 
@@ -581,35 +654,35 @@
                                 </thead>
                                 <tbody class="div_line grade-title1">
                                     <!-- Add table rows with data here -->
-                                    <tr class="hm-text">
-                                        <td>A</td>
-                                        <td> = </td>
-                                        <td>4.0</td>
+                                    <tr class="text2-title">
+                                        <td class="text2-title">A</td>
+                                        <td class="text2-title"> = </td>
+                                        <td class="text2-title">4.0</td>
                                     </tr>
-                                    <tr class="hm-text">
-                                        <td>AB</td>
-                                        <td> = </td>
-                                        <td>3.5</td>
+                                    <tr class="text2-title">
+                                        <td class="text2-title">AB</td>
+                                        <td class="text2-title"> = </td>
+                                        <td class="text2-title">3.5</td>
                                     </tr>
-                                    <tr class="hm-text">
-                                        <td>B</td>
-                                        <td> = </td>
-                                        <td>3.0</td>
+                                    <tr class="text2-summary">
+                                        <td class="text2-title">B</td>
+                                        <td class="text2-title"> = </td>
+                                        <td class="text2-title">3.0</td>
                                     </tr>
-                                    <tr class="hm-text">
-                                        <td>BC</td>
-                                        <td> = </td>
-                                        <td>2.5</td>
+                                    <tr class="text2-summary">
+                                        <td class="text2-title">BC</td>
+                                        <td class="text2-title"> = </td>
+                                        <td class="text2-title">2.5</td>
                                     </tr>
-                                    <tr class="hm-text">
-                                        <td>C</td>
-                                        <td> = </td>
-                                        <td>2.0</td>
+                                    <tr class="text2-summary">
+                                        <td class="text2-title">C</td>
+                                        <td class="text2-title"> = </td>
+                                        <td class="text2-title">2.0</td>
                                     </tr>
-                                    <tr class="hm-text">
-                                        <td>D</td>
-                                        <td> = </td>
-                                        <td>1.0</td>
+                                    <tr class="text2-summary">
+                                        <td class="text2-title">D</td>
+                                        <td class="text2-title"> = </td>
+                                        <td class="text2-title">1.0</td>
                                     </tr>
                                 </tbody>
                             </table>

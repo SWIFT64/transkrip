@@ -189,10 +189,10 @@ func main() {
 		NikDekan:          student.NikDekan,
 	}
 
-	switch len(student.Subjects) > 60 {
+	switch len(student.Subjects) > 48 {
 	case true:
-		pdfPageOne.Subjects = student.Subjects[:60]
-		pdfPageTwo.Subjects = student.Subjects[60:]
+		pdfPageOne.Subjects = student.Subjects[:48]
+		pdfPageTwo.Subjects = student.Subjects[48:]
 	case false:
 		pdfPageOne.Subjects = student.Subjects
 	}
@@ -200,7 +200,7 @@ func main() {
 	// Read the HTML template from the file
 	var templateFile1, templateFile2 string
 
-	switch len(student.Subjects) > 60 {
+	switch len(student.Subjects) > 48 {
 	case true:
 		templateFile1 = "template/page_1.html"
 		templateFile2 = "template/page_2a.html"

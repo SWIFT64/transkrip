@@ -8,7 +8,7 @@
     <style>
         @page {
             size: A4;
-            margin-top: 1.75cm;
+            margin-top: 2cm;
             margin-bottom: 0cm;
         }
         .content {
@@ -73,6 +73,7 @@
         .column-nilai {
             column-count: 2;
             column-gap: 2.5px;
+            vertical-align: top;
         }
         .tabel-nilai {
             width: 100%;
@@ -341,7 +342,7 @@
                                     <tr class="small-space">
                                         <td class="zero-mp tg-0lax2">
                                             <p class="text2-title top-mp">Tahun Masuk</p>
-                                            <p class="text2-summary bot-mp"><i>Entry Year</i></p>
+                                            <p class="text2-summary bot-mp"><i>Year of Entry</i></p>
                                         </td>
                                         <td class="zero-mp tg-0lax2">
                                             <p class="text2-title top-mp"> : {{.TahunMasukMhs}}</p>
@@ -432,20 +433,20 @@
                 </thead>
             </table>
         </div>
-        <div class="column-nilai">
+        <div class="column-nilai" style="margin-top: 10px;"> 
             <table class="tabel-nilai">
-                <tbody>                            
+                <tbody class="nilai-align">                            
                     {{range $index, $subject := .Subjects}}
-                    <tr class="grade-content">
+                    <tr class="grade-content nilai-align">
                         <td class="nilai-align">
-                            <p class="grade-index nilai-align">{{$subject.Index}}</p>
-                            <p class="grade-index nilai-align"> </p>
-                            <p class="grade-index nilai-align"> </p>
+                            <p class="grade-title nilai-align"> </p>
+                            <p class="grade-title nilai-align">{{$subject.Index}}</p>
+                            <p class="grade-title nilai-align"> </p>
                         </td>
                         <td>
-                            <p class="grade-title text-left">{{$subject.Subjname}}</p>
-                            <p class="grade-summary text-left nilai-align"><i>{{$subject.Subjnameeng}}</i></p>
-                            <p class="grade-summary text-left nilai-align"> </p>                            
+                            <p class="grade-title text-left nilai-align">{{$subject.Subjname}} <br>
+                            <span class="grade-summary text-left nilai-align"><i>{{$subject.Subjnameeng}}</i></span>
+                            </p>                            
                         </td>
                         <td>
                             <p class="grade-details nilai-align">{{$subject.Credits}}</p>
@@ -497,7 +498,7 @@
                         <tr>
                             <th class="footer-col">
                                 <p class="footer-title text-left"><b>Bersambung ke halaman berikutnya...</b></p>
-                                <p class="footer-summary text-left"><i>Continue to next page...</i></p>
+                                <p class="footer-summary text-left"><i>Continued on next page...</i></p>
                             </th>
                             <th>
                                 <div class="box-paraf">
